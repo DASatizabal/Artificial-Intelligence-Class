@@ -1,0 +1,5 @@
+intent,description
+find_provider,"find an in-network provider by specialty, location, language, or time"
+check_network,check whether a named provider is in the member's network
+change_pcp,change the member's primary care provider (PCP)
+report_access_issue,report that care is too far away or unavailable (network adequacy complaint)

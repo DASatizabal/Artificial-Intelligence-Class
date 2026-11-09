@@ -1,0 +1,162 @@
+{
+  "data": {
+    "requests": 606,
+    "train": 424,
+    "test": 182,
+    "challenge": 36,
+    "intent_counts": {
+      "find_provider": 271,
+      "change_pcp": 122,
+      "check_network": 121,
+      "report_access_issue": 92
+    },
+    "providers": 120
+  },
+  "model_selection_cv_on_train": {
+    "bow": {
+      "mean_macro_f1": 0.9894,
+      "std": 0.0154
+    },
+    "tfidf": {
+      "mean_macro_f1": 0.9893,
+      "std": 0.0102
+    }
+  },
+  "champion": "bow",
+  "intent_eval": {
+    "bow_test": {
+      "accuracy": 0.9945,
+      "macro_f1": 0.9941
+    },
+    "bow_challenge": {
+      "accuracy": 0.8333,
+      "macro_f1": 0.8336
+    },
+    "tfidf_test": {
+      "accuracy": 0.9945,
+      "macro_f1": 0.9939
+    },
+    "tfidf_challenge": {
+      "accuracy": 0.8333,
+      "macro_f1": 0.8254
+    }
+  },
+  "top_terms": {
+    "change_pcp": [
+      "my",
+      "to",
+      "dr",
+      "pcp",
+      "change"
+    ],
+    "check_network": [
+      "dr",
+      "plan",
+      "is",
+      "covered",
+      "network"
+    ],
+    "find_provider": [
+      "need",
+      "zip",
+      "miles",
+      "within",
+      "me"
+    ],
+    "report_access_issue": [
+      "no",
+      "near",
+      "full",
+      "every",
+      "too"
+    ]
+  },
+  "slots": {
+    "test": {
+      "per_slot_true_intent": {
+        "specialty": 1.0,
+        "zip": 1.0,
+        "max_miles": 1.0,
+        "language": 1.0,
+        "provider_name": 1.0,
+        "time_hour": 1.0
+      },
+      "frame_match_true_intent": 1.0,
+      "per_slot_predicted_intent": {
+        "specialty": 1.0,
+        "zip": 1.0,
+        "max_miles": 1.0,
+        "language": 1.0,
+        "provider_name": 1.0,
+        "time_hour": 1.0
+      },
+      "frame_match_predicted_intent": 1.0
+    },
+    "challenge": {
+      "per_slot_true_intent": {
+        "specialty": 1.0,
+        "zip": 1.0,
+        "max_miles": 1.0,
+        "language": 1.0,
+        "provider_name": 1.0,
+        "time_hour": 1.0
+      },
+      "frame_match_true_intent": 1.0,
+      "per_slot_predicted_intent": {
+        "specialty": 0.9474,
+        "zip": 0.9474,
+        "max_miles": 1.0,
+        "language": 1.0,
+        "provider_name": 1.0,
+        "time_hour": 1.0
+      },
+      "frame_match_predicted_intent": 0.9722
+    }
+  },
+  "injection_detector": {
+    "true_pos": 10,
+    "false_pos": 0,
+    "false_neg": 0,
+    "precision": 1.0,
+    "recall": 1.0
+  },
+  "actions": {
+    "challenge:accept": 14,
+    "challenge:ask_clarify": 3,
+    "challenge:block": 4,
+    "challenge:escalate": 2,
+    "challenge:inform": 7,
+    "challenge:reject": 6,
+    "test:accept": 95,
+    "test:ask_clarify": 13,
+    "test:block": 3,
+    "test:escalate": 4,
+    "test:inform": 35,
+    "test:reject": 32
+  },
+  "rules_fired": {
+    "R13": 65,
+    "R11": 38,
+    "R15": 31,
+    "R5": 20,
+    "R16": 17,
+    "R2b": 13,
+    "R6": 11,
+    "R7": 10,
+    "R1b": 7,
+    "R12": 7,
+    "R8": 7,
+    "R3": 6,
+    "R14": 5,
+    "R0": 2,
+    "R4": 1,
+    "R1": 1,
+    "R2e": 1
+  },
+  "astar": {
+    "calls": 226,
+    "node_expansions": 7047,
+    "providers_considered_without_pruning_note": "Manhattan lower bound stops the search once the top 3 are certain"
+  },
+  "runtime_seconds": 1.03
+}

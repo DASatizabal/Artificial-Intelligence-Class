@@ -1,0 +1,36 @@
+specialty,method,members,nodes,backtracks,seconds,solved,lookaheads
+cardiology,Plain backtracking,41,200000,199973,0.499,False,
+cardiology,Backtracking + forward checking,41,200000,122545,0.579,False,
+cardiology,MRV + forward checking,41,41,0,0.0,True,
+cardiology,MRV + FC + LCV,41,41,0,0.0,True,
+cardiology,MRV + FC + look-ahead,41,41,0,0.026,True,40.0
+dermatology,Plain backtracking,29,85,56,0.0,True,
+dermatology,Backtracking + forward checking,29,51,14,0.0,True,
+dermatology,MRV + forward checking,29,29,0,0.0,True,
+dermatology,MRV + FC + LCV,29,29,0,0.0,True,
+dermatology,MRV + FC + look-ahead,29,29,0,0.012,True,28.0
+endocrinology,Plain backtracking,41,8177,8136,0.017,True,
+endocrinology,Backtracking + forward checking,41,1445,762,0.004,True,
+endocrinology,MRV + forward checking,41,41,0,0.0,True,
+endocrinology,MRV + FC + LCV,41,41,0,0.001,True,
+endocrinology,MRV + FC + look-ahead,41,41,0,0.027,True,40.0
+ob-gyn,Plain backtracking,44,44,0,0.0,True,
+ob-gyn,Backtracking + forward checking,44,44,0,0.0,True,
+ob-gyn,MRV + forward checking,44,44,0,0.0,True,
+ob-gyn,MRV + FC + LCV,44,44,0,0.001,True,
+ob-gyn,MRV + FC + look-ahead,44,44,0,0.027,True,43.0
+orthopedic surgery,Plain backtracking,44,8397,8353,0.019,True,
+orthopedic surgery,Backtracking + forward checking,44,6694,3915,0.017,True,
+orthopedic surgery,MRV + forward checking,44,44,0,0.0,True,
+orthopedic surgery,MRV + FC + LCV,44,44,0,0.001,True,
+orthopedic surgery,MRV + FC + look-ahead,44,44,0,0.025,True,43.0
+primary care,Plain backtracking,228,200000,199879,1.375,False,
+primary care,Backtracking + forward checking,228,200000,158617,1.25,False,
+primary care,MRV + forward checking,228,200000,162899,2.811,False,
+primary care,MRV + FC + LCV,228,200000,148599,3.351,False,
+primary care,MRV + FC + look-ahead,228,243,0,0.791,True,242.0
+psychiatry,Plain backtracking,38,56,18,0.0,True,
+psychiatry,Backtracking + forward checking,38,42,3,0.0,True,
+psychiatry,MRV + forward checking,38,38,0,0.0,True,
+psychiatry,MRV + FC + LCV,38,38,0,0.0,True,
+psychiatry,MRV + FC + look-ahead,38,38,0,0.016,True,37.0

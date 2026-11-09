@@ -1,0 +1,147 @@
+{
+  "baseline": {
+    "members": 600,
+    "placed": 465,
+    "share_placed_within_standard": 0.775,
+    "distance_gaps": 77,
+    "capacity_gaps": 58,
+    "avg_miles": 4.88,
+    "max_miles": 15,
+    "slot_use": 0.67,
+    "high_cost_cap_violations": 0,
+    "capacity_violations": 0,
+    "by_specialty": [
+      {
+        "specialty": "cardiology",
+        "members": 45,
+        "placed_within_standard": 41,
+        "share": 0.9111,
+        "meets_90pct": true,
+        "distance_gaps": 1,
+        "capacity_gaps": 3
+      },
+      {
+        "specialty": "dermatology",
+        "members": 38,
+        "placed_within_standard": 29,
+        "share": 0.7632,
+        "meets_90pct": false,
+        "distance_gaps": 8,
+        "capacity_gaps": 1
+      },
+      {
+        "specialty": "endocrinology",
+        "members": 41,
+        "placed_within_standard": 41,
+        "share": 1.0,
+        "meets_90pct": true,
+        "distance_gaps": 0,
+        "capacity_gaps": 0
+      },
+      {
+        "specialty": "ob-gyn",
+        "members": 49,
+        "placed_within_standard": 44,
+        "share": 0.898,
+        "meets_90pct": false,
+        "distance_gaps": 5,
+        "capacity_gaps": 0
+      },
+      {
+        "specialty": "orthopedic surgery",
+        "members": 54,
+        "placed_within_standard": 44,
+        "share": 0.8148,
+        "meets_90pct": false,
+        "distance_gaps": 8,
+        "capacity_gaps": 2
+      },
+      {
+        "specialty": "primary care",
+        "members": 321,
+        "placed_within_standard": 228,
+        "share": 0.7103,
+        "meets_90pct": false,
+        "distance_gaps": 46,
+        "capacity_gaps": 47
+      },
+      {
+        "specialty": "psychiatry",
+        "members": 52,
+        "placed_within_standard": 38,
+        "share": 0.7308,
+        "meets_90pct": false,
+        "distance_gaps": 9,
+        "capacity_gaps": 5
+      }
+    ]
+  },
+  "search_totals": [
+    {
+      "method": "Backtracking + forward checking",
+      "nodes": 408276,
+      "backtracks": 285856,
+      "seconds": 1.85,
+      "specialties_solved": 5
+    },
+    {
+      "method": "MRV + FC + LCV",
+      "nodes": 200237,
+      "backtracks": 148599,
+      "seconds": 3.354,
+      "specialties_solved": 6
+    },
+    {
+      "method": "MRV + FC + look-ahead",
+      "nodes": 480,
+      "backtracks": 0,
+      "seconds": 0.924,
+      "specialties_solved": 7
+    },
+    {
+      "method": "MRV + forward checking",
+      "nodes": 200237,
+      "backtracks": 162899,
+      "seconds": 2.811,
+      "specialties_solved": 6
+    },
+    {
+      "method": "Plain backtracking",
+      "nodes": 416759,
+      "backtracks": 416415,
+      "seconds": 1.9100000000000001,
+      "specialties_solved": 5
+    }
+  ],
+  "stress_test": {
+    "group_removed": "Pinecrest Medical Group",
+    "providers_removed": 15,
+    "min_conflicts": {
+      "steps": 3000,
+      "displaced": 73,
+      "displaced_replaced": 19,
+      "waitlisted": 64,
+      "other_members_moved": 14
+    },
+    "full_resolve": {
+      "other_members_moved": 26,
+      "placed": 402
+    },
+    "after_min_conflicts": {
+      "placed": 401,
+      "share_placed_within_standard": 0.6683,
+      "avg_miles": 4.9,
+      "capacity_violations": 0
+    },
+    "after_full_resolve": {
+      "placed": 402,
+      "share_placed_within_standard": 0.67,
+      "avg_miles": 5.01,
+      "capacity_violations": 0
+    }
+  },
+  "astar": {
+    "calls": 1100,
+    "node_expansions": 14885
+  }
+}

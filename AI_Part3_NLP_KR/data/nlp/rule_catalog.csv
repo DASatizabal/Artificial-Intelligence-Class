@@ -1,0 +1,17 @@
+rule_id,type,condition,action,notes
+R0,uncertain,intent confidence < 0.50,ask_clarify,ask which of the 4 things they need
+R1,hours,change_pcp time outside provider office hours,reject,office closed then
+R1b,hours,find_provider: no match open at requested hour,reject,no provider open then
+R2a-e,missing_slot,"required slot missing (specialty, ZIP, provider)",ask_clarify,ask for the missing slot
+R3,conflict,change_pcp to a specialist,reject,only primary care can be a PCP
+R4,network,change_pcp to out-of-network provider,reject,
+R5,capacity,provider not accepting new patients,reject,
+R6,adequacy,no in-network accepting provider within CMS standard,escalate,log access gap for network team
+R7,language,requested language not available within limit,inform,show closest options
+R8,security,prompt-injection text detected,block,blocked and logged; highest priority
+R9,unknown,named provider not in directory,reject,
+R10,capacity,panel full (panel_size >= capacity),reject,
+R11/R12,network,check_network answer,accept/inform,
+R13/R14,search,find_provider match / no match within limit,accept/reject,
+R15,complaint,access complaint but standard is met,inform,"complaint logged, options listed"
+R16,pcp,all PCP checks pass,accept,

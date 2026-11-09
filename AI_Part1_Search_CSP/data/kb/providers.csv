@@ -1,0 +1,121 @@
+provider_id,name,specialty,row,col,in_network,accepting_new,languages,open_hour,close_hour,panel_capacity,panel_size
+P0001,Dr. Rios,primary care,32,12,1,1,English;Spanish,9,18,1200,751
+P0002,Dr. Costa,primary care,14,11,1,0,English;Spanish,8,17,2000,1183
+P0003,Dr. Rodriguez,primary care,7,27,1,0,English,9,20,800,614
+P0004,Dr. Bennett,primary care,19,18,1,1,English;Portuguese,8,19,1500,679
+P0005,Dr. Brown,primary care,31,7,1,1,English,7,16,1200,894
+P0006,Dr. Young,primary care,2,23,1,0,English,9,19,1500,1072
+P0007,Dr. Carvalho,primary care,9,6,1,0,English,9,17,800,485
+P0008,Dr. Dupont,primary care,7,12,1,1,English;Spanish,9,18,1500,1185
+P0009,Dr. Smith,primary care,11,20,1,0,English;Spanish,8,16,1200,807
+P0010,Dr. Price,primary care,12,18,1,1,English;Haitian Creole,9,18,2000,939
+P0011,Dr. Lima,primary care,11,9,1,0,English;Haitian Creole,8,19,1200,1092
+P0012,Dr. Harris,primary care,7,7,1,1,English,7,18,2000,969
+P0013,Dr. King,primary care,10,19,1,0,English;Spanish,7,16,1500,1480
+P0014,Dr. Soto,primary care,35,6,0,0,English,7,17,1500,1256
+P0015,Dr. Ramirez,primary care,16,14,1,1,English;Spanish,7,16,800,769
+P0016,Dr. Vargas,primary care,2,13,0,0,English;Spanish,9,17,800,463
+P0017,Dr. Mitchell,primary care,6,3,1,1,English;Spanish,8,17,2000,1780
+P0018,Dr. Alvarez,primary care,23,26,0,1,English,8,17,800,699
+P0019,Dr. Toussaint,primary care,13,18,1,1,English;Spanish,7,17,1200,1158
+P0020,Dr. Lewis,primary care,27,17,1,1,English;Spanish,9,20,1200,818
+P0021,Dr. Sanchez,primary care,26,12,0,1,English;Spanish;Portuguese,8,17,2000,966
+P0022,Dr. Santos,primary care,28,18,1,1,English,8,19,2000,1639
+P0023,Dr. Martins,primary care,24,14,1,1,English;Spanish,8,18,1500,1289
+P0024,Dr. Charles,primary care,14,15,0,1,English,9,16,1200,670
+P0025,Dr. Louis,primary care,8,7,1,1,English,9,17,800,480
+P0026,Dr. Lopez,primary care,12,19,1,0,English;Portuguese,8,18,1200,835
+P0027,Dr. Martinez,primary care,10,9,1,1,English;Spanish,7,17,1500,900
+P0028,Dr. Espinoza,primary care,8,10,1,1,English;Spanish,8,18,800,741
+P0029,Dr. Roberts,primary care,37,14,1,1,English,8,17,2000,1424
+P0030,Dr. Moise,primary care,16,12,1,0,English,9,17,800,797
+P0031,Dr. Adams,primary care,4,12,1,1,English;Spanish,9,18,1500,919
+P0032,Dr. Etienne,primary care,35,6,1,1,English;Spanish,7,19,800,717
+P0033,Dr. Herrera,primary care,23,27,0,1,English;Spanish,9,17,2000,1372
+P0034,Dr. Beaumont,primary care,11,7,1,1,English,7,19,2000,1993
+P0035,Dr. Ibarra,primary care,9,12,1,1,English;Spanish,7,17,1200,669
+P0036,Dr. Castro,primary care,24,17,1,0,English,8,20,800,468
+P0037,Dr. Morales,primary care,12,17,1,0,English;Spanish,9,16,1200,1139
+P0038,Dr. Jean-Baptiste,primary care,17,22,1,1,English;Spanish,7,20,800,732
+P0039,Dr. Diaz,primary care,7,6,0,0,English;Spanish,7,19,800,460
+P0040,Dr. Augustin,primary care,33,11,0,1,English;Spanish,8,18,800,554
+P0041,Dr. Sandoval,primary care,6,27,1,1,English,8,17,1200,873
+P0042,Dr. Gomes,primary care,8,12,1,1,English,8,18,1200,1064
+P0043,Dr. Jimenez,primary care,26,20,1,0,English,8,18,1200,601
+P0044,Dr. Castillo,primary care,25,19,1,0,English;Spanish,8,19,2000,1270
+P0045,Dr. Johnson,primary care,11,5,1,1,English;Haitian Creole,9,18,1500,962
+P0046,Dr. Evans,cardiology,30,5,0,1,English;Spanish;Portuguese,7,18,500,468
+P0047,Dr. Oliveira,cardiology,10,8,1,1,English,8,16,500,429
+P0048,Dr. Romero,cardiology,34,8,1,1,English;Spanish,8,19,700,369
+P0049,Dr. Cortes,cardiology,32,20,1,1,English,9,17,300,146
+P0050,Dr. Salazar,cardiology,3,9,0,1,English;Spanish,7,18,300,221
+P0051,Dr. Figueroa,cardiology,21,26,1,1,English;Spanish,8,18,700,639
+P0052,Dr. Molina,cardiology,12,11,1,0,English;Haitian Creole,9,17,700,428
+P0053,Dr. Hall,cardiology,9,13,1,1,English,7,18,700,577
+P0054,Dr. Taylor,cardiology,12,21,1,0,English;Spanish;Haitian Creole,8,17,700,525
+P0055,Dr. Miller,cardiology,28,17,1,1,English;Spanish,8,17,700,342
+P0056,Dr. Aguilar,cardiology,19,15,1,1,English,8,20,500,251
+P0057,Dr. Miranda,cardiology,17,15,0,1,English;Portuguese,8,18,700,556
+P0058,Dr. Wright,cardiology,10,19,1,0,English;Spanish,8,19,700,699
+P0059,Dr. Jackson,cardiology,19,18,1,1,English;Spanish,7,20,300,276
+P0060,Dr. Campbell,cardiology,39,19,0,0,English;Spanish,7,17,300,284
+P0061,Dr. Moore,cardiology,35,8,1,1,English;Spanish,7,18,500,316
+P0062,Dr. Navarro,dermatology,15,17,1,1,English;Spanish,7,18,300,187
+P0063,Dr. Scott,dermatology,11,5,0,1,English;Spanish;Haitian Creole;Portuguese,9,16,500,391
+P0064,Dr. White,dermatology,21,26,0,1,English;Spanish,7,16,300,159
+P0065,Dr. Suarez,dermatology,29,21,1,1,English,9,17,500,286
+P0066,Dr. Pacheco,dermatology,4,14,1,0,English;Haitian Creole,8,18,500,420
+P0067,Dr. Wilson,dermatology,30,13,1,1,English;Portuguese,9,17,300,271
+P0068,Dr. Phillips,dermatology,16,21,1,0,English;Haitian Creole,7,20,500,474
+P0069,Dr. Reyes,dermatology,0,13,1,1,English;Haitian Creole,7,18,500,267
+P0070,Dr. Turner,dermatology,22,15,0,1,English,9,17,500,326
+P0071,Dr. Fuentes,dermatology,14,16,1,0,English;Spanish,7,19,300,174
+P0072,Dr. Guerrero,dermatology,19,13,1,1,English;Spanish,8,16,300,146
+P0073,Dr. Moreno,dermatology,30,18,1,0,English;Spanish,9,19,500,403
+P0074,Dr. Vega,endocrinology,11,4,1,1,English;Spanish,7,16,700,484
+P0075,Dr. Joseph,endocrinology,18,16,1,1,English;Spanish;Haitian Creole,7,18,500,293
+P0076,Dr. Jones,endocrinology,7,8,1,1,English,7,16,500,340
+P0077,Dr. Perez,endocrinology,7,15,1,1,English;Haitian Creole,7,17,700,672
+P0078,Dr. Medina,endocrinology,29,14,1,1,English;Spanish,7,17,300,274
+P0079,Dr. Pierre,endocrinology,34,4,1,1,English,8,16,700,349
+P0080,Dr. Ramos,endocrinology,34,4,1,1,English;Spanish,9,17,700,644
+P0081,Dr. Mendoza,endocrinology,29,13,1,1,English,8,16,500,274
+P0082,Dr. Baptiste,ob-gyn,15,15,0,1,English;Spanish,7,17,500,283
+P0083,Dr. Ruiz,ob-gyn,14,3,1,1,English;Spanish;Haitian Creole,8,17,300,268
+P0084,Dr. Silva,ob-gyn,8,12,1,1,English,8,17,500,273
+P0085,Dr. Chavez,ob-gyn,10,17,1,1,English;Portuguese,7,16,700,422
+P0086,Dr. Pereira,ob-gyn,14,12,1,0,English;Spanish,8,16,500,497
+P0087,Dr. Thomas,ob-gyn,0,25,0,0,English;Spanish,7,18,700,482
+P0088,Dr. Rivera,ob-gyn,27,17,1,1,English;Spanish,9,18,700,328
+P0089,Dr. Gutierrez,ob-gyn,27,17,1,1,English,9,17,300,178
+P0090,Dr. Rocha,ob-gyn,29,17,1,1,English,9,17,500,295
+P0091,Dr. Cabrera,ob-gyn,0,25,0,0,English;Spanish,8,17,700,687
+P0092,Dr. Carter,ob-gyn,6,7,0,1,English;Spanish,7,18,300,228
+P0093,Dr. Rojas,ob-gyn,8,8,1,1,English;Portuguese,7,17,300,289
+P0094,Dr. Hill,ob-gyn,9,18,1,1,English;Spanish,8,17,700,699
+P0095,Dr. Ribeiro,ob-gyn,11,3,0,1,English;Spanish,9,20,300,193
+P0096,Dr. Williams,orthopedic surgery,24,16,1,1,English;Spanish,8,16,700,445
+P0097,Dr. Acosta,orthopedic surgery,14,12,1,1,English,8,17,300,183
+P0098,Dr. Luna,orthopedic surgery,16,11,1,1,English;Spanish,9,18,300,223
+P0099,Dr. Torres,orthopedic surgery,2,23,1,1,English,7,18,700,583
+P0100,Dr. Valdez,orthopedic surgery,32,10,1,0,English;Spanish,8,18,300,238
+P0101,Dr. Gonzalez,orthopedic surgery,17,18,0,1,English;Portuguese,9,18,700,476
+P0102,Dr. Allen,orthopedic surgery,14,11,1,1,English,8,19,700,689
+P0103,Dr. Walker,orthopedic surgery,29,17,1,1,English;Spanish;Portuguese,8,18,500,485
+P0104,Dr. Hernandez,orthopedic surgery,1,22,1,0,English;Spanish,8,17,500,498
+P0105,Dr. Ferreira,orthopedic surgery,15,16,1,0,English;Spanish,8,16,300,140
+P0106,Dr. Laurent,orthopedic surgery,25,18,1,1,English;Spanish,8,17,300,230
+P0107,Dr. Hughes,orthopedic surgery,10,10,1,1,English;Spanish,9,19,700,380
+P0108,Dr. Green,psychiatry,8,7,1,1,English;Spanish;Portuguese,9,19,700,336
+P0109,Dr. Delgado,psychiatry,33,22,1,0,English;Spanish,7,17,700,372
+P0110,Dr. Davis,psychiatry,37,27,1,1,English;Spanish,7,18,700,515
+P0111,Dr. Clark,psychiatry,9,8,1,1,English;Spanish,7,16,700,582
+P0112,Dr. Baker,psychiatry,35,11,0,1,English;Spanish;Portuguese,7,18,300,258
+P0113,Dr. Coleman,psychiatry,31,11,1,1,English;Portuguese,7,20,500,259
+P0114,Dr. Cruz,psychiatry,23,18,1,1,English,8,17,700,441
+P0115,Dr. Foster,psychiatry,20,21,1,1,English,9,17,500,243
+P0116,Dr. Almeida,psychiatry,3,26,1,1,English;Spanish,9,19,300,249
+P0117,Dr. Ortiz,psychiatry,11,9,0,1,English,8,18,300,244
+P0118,Dr. Garcia,psychiatry,23,25,1,1,English,9,17,500,336
+P0119,Dr. Desir,psychiatry,29,17,1,1,English,7,18,700,353
+P0120,Dr. Fernandez,psychiatry,30,15,1,0,English,8,17,500,388
