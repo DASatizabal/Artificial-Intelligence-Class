@@ -171,6 +171,39 @@ Analogy: the mailroom sorter. If a claim lands in the referral pile, the member 
 | CNN | Looks at small patches to find lines, boxes, logos | A magnifying glass sliding across the page |
 | Augmentation | Trains on crooked, blurry copies | Practicing reading bad handwriting so messy scans don't fool it |
 
+### What we actually built for AI Part 2 (Nov 9)
+
+**The data:** 1,500 made-up scanned documents, 500 of each type, each 64 x 64 pixels. Text is drawn as gray bars, so there are no real forms or people. Each type has its own layout:
+- **Claim form:** a grid of boxes plus a line-item table
+- **Referral:** a letterhead, paragraphs of text, and a signature
+- **Enrollment form:** a title bar, checkbox sections, and an ID photo box
+
+For each type: 280 to train on, 60 to decide when to stop training, 60 for the final test, and 100 **messy scans** (tilted, blurry, noisy, shadowed) that the model never trains on.
+
+**How the classifier works (written from scratch):**
+1. Flatten: each image becomes 4,096 numbers, one per pixel.
+2. Each document type gets a score: a weighted sum of all the pixels.
+3. Softmax turns the 3 scores into percentages that add up to 100%.
+4. Training nudges the weights until the right answer gets the highest percentage. It stops early when it stops improving on the validation images.
+
+**Results:**
+
+| Model | Clean scans | Messy scans |
+|---|---|---|
+| Trained on clean images only | 100% | **78%** (mixed all 3 types up) |
+| Trained with augmentation | 100% | **99.7%** (1 mistake out of 300) |
+
+**Augmentation** = practicing on messy copies. Each training image got 2 tilted, blurry, noisy copies. Like practicing reading bad handwriting before the test.
+
+**What the model looks at:** you can draw its weights as pictures. It learned *where* ink usually sits: the photo box and checkbox column for enrollment forms, the middle paragraphs for referrals, the box grid for claims. That's also why a tilted scan fools it. The ink moves. A CNN fixes that by sliding small pattern-finders across the page (built in MI Part 3).
+
+**Routing (the agent part):**
+- If the model is at least 70% sure, the document goes straight to its next step.
+- If it's less sure, a person checks it.
+- On the 300 messy scans: 99.3% were routed automatically with **zero wrong routes**, and 2 went to a person.
+
+**Honest note:** 100% on clean scans happens because the synthetic layouts are very different from each other. Real forms would be harder.
+
 ### MI Part 2: Classification Pipeline (the risk flag)
 
 **Why the project needs it:** the AI planner needs a simple yes/no ("is this a heavy patient?") to spread them across doctors and decide who gets placed first.

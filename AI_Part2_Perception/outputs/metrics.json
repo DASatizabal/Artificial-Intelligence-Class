@@ -1,0 +1,138 @@
+{
+  "data": {
+    "train": 840,
+    "val": 180,
+    "test": 180,
+    "messy": 300,
+    "augmented_copies": 1680,
+    "pixels_per_image": 4096
+  },
+  "models": {
+    "Softmax, clean training": {
+      "training_images": 840,
+      "best_epoch": 73,
+      "test": {
+        "accuracy": 1.0,
+        "macro_f1": 1.0
+      },
+      "messy": {
+        "accuracy": 0.78,
+        "macro_f1": 0.7854
+      }
+    },
+    "Softmax + augmentation": {
+      "training_images": 2520,
+      "best_epoch": 71,
+      "test": {
+        "accuracy": 1.0,
+        "macro_f1": 1.0
+      },
+      "messy": {
+        "accuracy": 0.9967,
+        "macro_f1": 0.9967
+      }
+    }
+  },
+  "routing_messy": [
+    {
+      "threshold": 0.0,
+      "auto_routed_share": 1.0,
+      "accuracy_of_auto_routed": 0.9967,
+      "sent_to_human": 0,
+      "wrong_auto_routes": 1
+    },
+    {
+      "threshold": 0.5,
+      "auto_routed_share": 1.0,
+      "accuracy_of_auto_routed": 0.9967,
+      "sent_to_human": 0,
+      "wrong_auto_routes": 1
+    },
+    {
+      "threshold": 0.6,
+      "auto_routed_share": 1.0,
+      "accuracy_of_auto_routed": 0.9967,
+      "sent_to_human": 0,
+      "wrong_auto_routes": 1
+    },
+    {
+      "threshold": 0.7,
+      "auto_routed_share": 0.9933,
+      "accuracy_of_auto_routed": 1.0,
+      "sent_to_human": 2,
+      "wrong_auto_routes": 0
+    },
+    {
+      "threshold": 0.8,
+      "auto_routed_share": 0.99,
+      "accuracy_of_auto_routed": 1.0,
+      "sent_to_human": 3,
+      "wrong_auto_routes": 0
+    },
+    {
+      "threshold": 0.9,
+      "auto_routed_share": 0.9833,
+      "accuracy_of_auto_routed": 1.0,
+      "sent_to_human": 5,
+      "wrong_auto_routes": 0
+    }
+  ],
+  "routing_examples": [
+    {
+      "file": "enrollment_form_0409.png",
+      "true": "enrollment_form",
+      "predicted": "enrollment_form",
+      "confidence": 1.0,
+      "next_step": "add or update the provider directory"
+    },
+    {
+      "file": "referral_0404.png",
+      "true": "referral",
+      "predicted": "referral",
+      "confidence": 1.0,
+      "next_step": "start a provider search (AI Part 1 planner)"
+    },
+    {
+      "file": "enrollment_form_0466.png",
+      "true": "enrollment_form",
+      "predicted": "enrollment_form",
+      "confidence": 1.0,
+      "next_step": "add or update the provider directory"
+    },
+    {
+      "file": "referral_0409.png",
+      "true": "referral",
+      "predicted": "referral",
+      "confidence": 1.0,
+      "next_step": "start a provider search (AI Part 1 planner)"
+    },
+    {
+      "file": "enrollment_form_0450.png",
+      "true": "enrollment_form",
+      "predicted": "enrollment_form",
+      "confidence": 1.0,
+      "next_step": "add or update the provider directory"
+    },
+    {
+      "file": "claim_form_0429.png",
+      "true": "claim_form",
+      "predicted": "claim_form",
+      "confidence": 0.992,
+      "next_step": "send to claims (feeds MI cost data)"
+    },
+    {
+      "file": "claim_form_0474.png",
+      "true": "claim_form",
+      "predicted": "claim_form",
+      "confidence": 1.0,
+      "next_step": "send to claims (feeds MI cost data)"
+    },
+    {
+      "file": "enrollment_form_0415.png",
+      "true": "enrollment_form",
+      "predicted": "enrollment_form",
+      "confidence": 1.0,
+      "next_step": "add or update the provider directory"
+    }
+  ]
+}
