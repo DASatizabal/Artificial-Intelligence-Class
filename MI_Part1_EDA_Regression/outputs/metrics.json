@@ -1,0 +1,106 @@
+{
+  "rows_after_dedup": 31500,
+  "train_rows": 13500,
+  "test_rows": 3000,
+  "split": {
+    "train": [
+      "2025-01",
+      "2025-09"
+    ],
+    "gap": [
+      "2025-10",
+      "2025-12"
+    ],
+    "test": [
+      "2026-01",
+      "2026-02"
+    ]
+  },
+  "scores": [
+    {
+      "model": "Mean of training rows",
+      "MAE": 2446.353,
+      "RMSE": 7758.0,
+      "R2": -0.0
+    },
+    {
+      "model": "Last quarter repeats",
+      "MAE": 2609.799,
+      "RMSE": 8837.355,
+      "R2": -0.298
+    },
+    {
+      "model": "Linear regression",
+      "MAE": 2167.622,
+      "RMSE": 7425.549,
+      "R2": 0.084
+    },
+    {
+      "model": "Log model, typical member (median)",
+      "MAE": 1834.406,
+      "RMSE": 8099.361,
+      "R2": -0.09
+    }
+  ],
+  "linear_coefficients_per_1sd": {
+    "cost_prior_12m": 851.9,
+    "chronic_conditions": 631.3,
+    "plan_type_Medicare Advantage": 431.7,
+    "age": 346.0,
+    "plan_type_Medicaid": -269.3,
+    "admits_12m": -246.9,
+    "plan_type_Unknown": -230.7,
+    "er_visits_6m": 223.7,
+    "saw_pcp_last_3m": -221.4,
+    "cost_month": 74.0,
+    "plan_type_Marketplace": 68.3,
+    "cost_prior_3m": -58.3,
+    "sex_M": 51.0,
+    "sex_F": -51.0,
+    "county_Miami-Dade": -17.9,
+    "county_Broward": 17.9,
+    "miles_to_pcp": -4.2
+  },
+  "correlations": {
+    "saw_pcp_last_3m": -0.003,
+    "miles_to_pcp": 0.033,
+    "cost_month": 0.11,
+    "cost_prior_3m": 0.145,
+    "admits_12m": 0.18,
+    "age": 0.217,
+    "er_visits_6m": 0.243,
+    "cost_prior_12m": 0.249,
+    "chronic_conditions": 0.258
+  },
+  "access_bands": [
+    {
+      "miles_to_pcp": "0-2",
+      "rows": 15731,
+      "saw_pcp": 0.693,
+      "er_6m": 0.543,
+      "next_q_cost": 1839.499
+    },
+    {
+      "miles_to_pcp": "3-5",
+      "rows": 13276,
+      "saw_pcp": 0.55,
+      "er_6m": 0.766,
+      "next_q_cost": 1984.59
+    },
+    {
+      "miles_to_pcp": "6-8",
+      "rows": 1690,
+      "saw_pcp": 0.405,
+      "er_6m": 1.038,
+      "next_q_cost": 2663.031
+    },
+    {
+      "miles_to_pcp": "9+",
+      "rows": 803,
+      "saw_pcp": 0.138,
+      "er_6m": 1.164,
+      "next_q_cost": 2704.196
+    }
+  ],
+  "negative_predictions_linear": 126
+}

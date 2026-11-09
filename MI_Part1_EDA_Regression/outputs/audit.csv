@@ -1,0 +1,11 @@
+Check,Finding,Action
+Shape,"31,563 rows x 16 columns",None
+Duplicate rows,63,Removed (double-loaded rows)
+Members / months,"1,500 members, 21 months (2025-01 to 2026-09)","Split by month, never randomly"
+Missing plan_type,472 (1.5%),Fill with 'Unknown' inside the pipeline
+Other missing values,0,None
+Negative cost_month,"40 rows, min $-3,800",Kept: claim reversals are real refunds
+Age range,18 to 95,Valid
+Miles to PCP,0 to 11,Valid (CMS limit for PCP is 5)
+Target cost_next_3m,"median $472, mean $1,967, max $218,118",Very skewed: also model log(cost)
+Top 10% share of cost,64.8%,The few drive most spend (sets up MI Part 2)

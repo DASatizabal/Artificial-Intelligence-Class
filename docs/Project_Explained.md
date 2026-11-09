@@ -49,6 +49,41 @@ Real-world version: when a big provider group leaves the network, the network te
   - **Forward checking:** after each seat, cross off the seats that are no longer possible.
   - **Min-conflicts:** when a doctor leaves, fix only the people who lost their seat.
 
+### What we actually built for AI Part 1 (Nov 9)
+
+- **600 made-up members**, each with a home location, the type of doctor they need, and a stand-in high-cost yes/no (until MI Part 2 builds the real one).
+- **Open seats:** only in-network doctors accepting new patients have seats, and the seats add up to 115% of what's needed, so it's tight on purpose. Each doctor can take high-cost members for at most 35% of their seats.
+- **Each specialty is its own puzzle.** Cardiology seats have nothing to do with dermatology seats, so we solve them separately. Smaller puzzles are faster.
+
+**The race between methods (same puzzles, same 200,000-step limit):**
+
+| Method | Plain meaning | Solved (of 7) | Steps |
+|---|---|---|---|
+| Plain backtracking | Seat people in list order, undo when stuck | 5 | 416,759 |
+| + Forward checking | After each seat, cross off full doctors for everyone else | 5 | 408,276 |
+| MRV + forward checking | Also seat the pickiest member first | 6 | 200,237 |
+| + LCV | Also try the doctor that blocks the fewest others | 6 | 200,237 |
+| **+ Look-ahead** | **Before each seat, check that everyone still waiting can fit** | **7** | **480, no undoing** |
+
+**Why the look-ahead was needed:** forward checking only notices when ONE member has no seat left. It can't see when a GROUP of members is fighting over too few seats, so the search walks into a dead end and keeps undoing. The look-ahead checks the whole group each time. Analogy: before seating a guest, the planner quickly counts whether the remaining guests still fit in the remaining chairs.
+
+**Why no AC-3:** AC-3 checks rules between two guests at a time. "A doctor has 8 seats" involves everyone who could pick that doctor, so it isn't a two-guest rule.
+
+**Results:**
+- 465 of 600 members (77.5%) placed inside the federal distance limit, 4.88 miles on average, no doctor over capacity.
+- 77 members have **no doctor close enough** (fix: recruit doctors there).
+- 58 members have **close doctors that are full** (fix: more open seats).
+- Only cardiology and endocrinology hit the 90% target. Primary care was worst (71%) because its limit is just 5 miles.
+
+**Stress test: a big doctor group leaves.** Pinecrest Medical Group (15 doctors) leaves, and 73 members lose their doctor.
+
+| Way to recover | Placed afterward | Unaffected members moved |
+|---|---|---|
+| Min-conflicts (fix only what broke) | 401 | 14 |
+| Start over from scratch | 402 | 26 |
+
+Almost the same coverage, but repair moves fewer people. Every move is a member forced to change doctors.
+
 ### MI Part 1: EDA + Regression
 
 | Tool | Job | Analogy |
@@ -73,6 +108,42 @@ Real-world version: when a big provider group leaves the network, the network te
 **No peeking rule (leakage):** every clue must be something we'd know *before* the quarter we're predicting.
 
 **Note:** Part 1 gives a **dollar estimate**. The yes/no **risk flag** comes in Part 2.
+
+### What we actually built for MI Part 1 (Nov 9)
+
+**The data:** 1,500 made-up members followed month by month from January 2025 to September 2026, which comes to 31,563 rows. The first 600 are the same members from AI Part 1. "Miles to PCP" comes straight from AI Part 1's A* search.
+
+**The audit (popping the hood):**
+
+| Found | What we did |
+|---|---|
+| 63 rows loaded twice | Removed |
+| 472 rows missing plan type | Labeled "Unknown" instead of throwing them away |
+| 40 negative monthly costs | Kept, because they're refunds (claim reversals) |
+| Middle member costs $435 a quarter, average is $1,736 | The top 10% of rows are 66% of all cost. A few people drive most of the spending |
+
+**What the data showed:**
+- More chronic conditions means more cost: about $900 a quarter with none, over $10,000 with 5 or more.
+- **Distance matters for the far-away group.** Members 9+ miles from a doctor:
+  - only 14% saw their doctor recently (vs 69% for members within 2 miles)
+  - went to the ER about twice as often
+  - cost about $2,700 vs $1,840
+- **One number can hide a pattern.** The overall correlation between miles and cost is almost zero (0.03), because most members live close. The effect only shows up when you look at the far-away group by itself.
+
+**The no-peeking split:**
+- Train on January to September 2025, test on January to February 2026.
+- October to December 2025 is skipped on purpose. A September row's answer covers October to December. Training past September would let the answers leak into the test months.
+
+**The scorecard (average miss on the test months):**
+
+| Model | Average miss | Plain meaning |
+|---|---|---|
+| Guess the average for everyone | $2,446 | The bar to beat |
+| "Next quarter = last quarter" | $2,610 | Worse! One bad quarter usually isn't repeated |
+| **Linear regression** | **$2,168** | **Beats both. This is the baseline future models must beat** |
+| Log version | $1,834 | Closer for typical members, but misses the huge bills by more |
+
+**Honest weak spots:** the straight line predicts below $0 for 126 rows, and it can't reach the giant bills. That's why Part 2 builds a yes/no high-cost flag and later Parts use models that can bend.
 
 ---
 

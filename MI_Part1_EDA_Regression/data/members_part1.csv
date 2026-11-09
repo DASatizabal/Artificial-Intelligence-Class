@@ -1,0 +1,601 @@
+member_id,zip,row,col,age,need_specialty,high_cost
+M0001,33156,29,20,70,endocrinology,1
+M0002,33030,36,8,60,ob-gyn,0
+M0003,33014,16,16,71,dermatology,0
+M0004,33015,15,15,43,cardiology,0
+M0005,33176,29,11,54,primary care,0
+M0006,33176,31,13,50,primary care,0
+M0007,33309,3,24,65,endocrinology,0
+M0008,33029,6,3,44,primary care,0
+M0009,33024,12,18,43,dermatology,0
+M0010,33176,30,13,38,primary care,0
+M0011,33176,32,17,61,endocrinology,0
+M0012,33024,10,19,59,ob-gyn,0
+M0013,33155,23,17,50,cardiology,0
+M0014,33024,12,22,43,primary care,0
+M0015,33156,29,17,67,cardiology,0
+M0016,33309,4,21,50,primary care,0
+M0017,33176,27,12,42,primary care,0
+M0018,33139,21,23,50,ob-gyn,0
+M0019,33015,15,17,46,primary care,0
+M0020,33155,27,17,66,primary care,0
+M0021,33024,11,17,69,primary care,0
+M0022,33135,23,22,29,primary care,0
+M0023,33030,36,5,42,primary care,0
+M0024,33156,31,18,70,primary care,0
+M0025,33317,5,12,72,primary care,0
+M0026,33012,21,13,47,orthopedic surgery,0
+M0027,33155,26,17,58,cardiology,0
+M0028,33317,4,18,61,primary care,0
+M0029,33029,9,7,82,cardiology,1
+M0030,33186,29,12,51,primary care,0
+M0031,33309,0,25,40,ob-gyn,0
+M0032,33014,19,15,95,psychiatry,0
+M0033,33014,18,16,44,cardiology,0
+M0034,33309,1,25,76,orthopedic surgery,1
+M0035,33012,17,12,49,primary care,0
+M0036,33155,22,16,60,primary care,0
+M0037,33025,9,13,45,primary care,0
+M0038,33176,27,12,42,psychiatry,0
+M0039,33012,21,13,46,primary care,1
+M0040,33015,14,17,36,orthopedic surgery,0
+M0041,33176,28,15,62,primary care,0
+M0042,33139,23,27,76,primary care,0
+M0043,33027,7,5,34,primary care,0
+M0044,33024,14,20,51,cardiology,0
+M0045,33024,9,22,68,psychiatry,0
+M0046,33024,10,16,63,primary care,0
+M0047,33139,25,23,57,endocrinology,0
+M0048,33024,8,21,52,endocrinology,0
+M0049,33024,10,21,66,primary care,0
+M0050,33014,14,15,67,psychiatry,0
+M0051,33186,32,8,62,dermatology,0
+M0052,33024,8,17,61,psychiatry,0
+M0053,33186,34,7,33,ob-gyn,1
+M0054,33024,13,18,45,ob-gyn,0
+M0055,33012,20,13,48,primary care,0
+M0056,33139,22,26,28,primary care,0
+M0057,33025,14,16,89,primary care,1
+M0058,33012,20,12,63,ob-gyn,0
+M0059,33024,14,19,65,primary care,1
+M0060,33024,14,19,53,primary care,0
+M0061,33317,4,18,75,primary care,0
+M0062,33012,19,12,58,orthopedic surgery,1
+M0063,33024,14,18,93,cardiology,0
+M0064,33309,1,23,39,ob-gyn,1
+M0065,33186,33,12,73,orthopedic surgery,0
+M0066,33176,27,16,62,dermatology,0
+M0067,33024,13,22,60,orthopedic surgery,0
+M0068,33015,16,14,61,primary care,0
+M0069,33014,14,16,87,primary care,0
+M0070,33029,7,9,56,endocrinology,0
+M0071,33186,33,11,87,primary care,0
+M0072,33176,33,14,65,ob-gyn,0
+M0073,33135,19,20,74,primary care,0
+M0074,33176,29,11,59,dermatology,0
+M0075,33155,25,18,31,primary care,0
+M0076,33176,27,14,83,ob-gyn,0
+M0077,33186,29,10,37,primary care,0
+M0078,33024,9,20,77,cardiology,0
+M0079,33012,19,18,65,primary care,0
+M0080,33186,34,8,68,primary care,1
+M0081,33139,22,27,48,endocrinology,0
+M0082,33176,29,17,61,primary care,0
+M0083,33029,7,4,64,psychiatry,0
+M0084,33015,12,20,83,cardiology,0
+M0085,33156,29,18,58,psychiatry,0
+M0086,33030,36,10,67,orthopedic surgery,0
+M0087,33024,11,16,50,primary care,0
+M0088,33176,31,11,36,primary care,0
+M0089,33029,8,7,62,primary care,0
+M0090,33176,33,14,49,ob-gyn,0
+M0091,33030,34,5,60,primary care,0
+M0092,33309,4,22,46,primary care,0
+M0093,33024,8,16,66,primary care,1
+M0094,33317,8,14,24,ob-gyn,0
+M0095,33176,28,16,70,psychiatry,0
+M0096,33139,20,25,80,primary care,1
+M0097,33024,12,18,81,dermatology,0
+M0098,33024,11,17,32,primary care,0
+M0099,33155,25,14,34,primary care,0
+M0100,33309,6,25,55,endocrinology,0
+M0101,33317,7,14,39,primary care,0
+M0102,33135,20,18,63,primary care,0
+M0103,33029,7,9,76,dermatology,0
+M0104,33024,11,20,55,primary care,0
+M0105,33024,14,21,60,primary care,0
+M0106,33135,20,17,57,primary care,0
+M0107,33025,14,13,39,primary care,0
+M0108,33014,17,13,76,cardiology,0
+M0109,33155,25,16,61,primary care,0
+M0110,33012,19,14,38,dermatology,0
+M0111,33012,20,15,59,psychiatry,0
+M0112,33012,19,18,44,primary care,0
+M0113,33014,14,10,69,orthopedic surgery,1
+M0114,33027,7,9,65,primary care,0
+M0115,33155,28,14,24,orthopedic surgery,0
+M0116,33024,8,16,45,primary care,0
+M0117,33030,34,7,65,primary care,0
+M0118,33155,28,18,52,dermatology,1
+M0119,33025,12,14,69,primary care,0
+M0120,33030,37,5,41,ob-gyn,0
+M0121,33024,11,17,50,primary care,0
+M0122,33015,15,18,84,primary care,1
+M0123,33186,35,10,31,primary care,0
+M0124,33012,15,14,18,primary care,0
+M0125,33176,33,11,54,endocrinology,0
+M0126,33317,6,15,40,cardiology,0
+M0127,33176,29,13,63,orthopedic surgery,0
+M0128,33186,32,7,45,orthopedic surgery,0
+M0129,33014,19,10,42,primary care,0
+M0130,33135,22,21,44,primary care,0
+M0131,33309,4,20,67,primary care,0
+M0132,33309,6,21,62,endocrinology,0
+M0133,33030,38,9,79,ob-gyn,0
+M0134,33155,26,13,38,ob-gyn,0
+M0135,33024,11,17,37,cardiology,0
+M0136,33030,38,6,37,primary care,0
+M0137,33155,26,15,29,primary care,0
+M0138,33014,16,10,71,primary care,0
+M0139,33015,12,17,79,cardiology,0
+M0140,33186,34,10,70,primary care,0
+M0141,33309,2,22,61,endocrinology,0
+M0142,33176,27,17,36,ob-gyn,1
+M0143,33025,8,14,50,primary care,0
+M0144,33139,22,26,66,primary care,0
+M0145,33139,21,23,18,primary care,0
+M0146,33027,8,7,25,primary care,0
+M0147,33176,33,11,67,primary care,0
+M0148,33176,28,13,92,primary care,0
+M0149,33024,8,21,28,primary care,0
+M0150,33014,17,12,55,primary care,0
+M0151,33025,11,13,43,dermatology,0
+M0152,33015,12,14,29,ob-gyn,0
+M0153,33027,9,5,29,primary care,0
+M0154,33012,21,13,18,cardiology,0
+M0155,33027,12,6,72,primary care,0
+M0156,33027,8,8,65,ob-gyn,0
+M0157,33015,18,15,79,endocrinology,0
+M0158,33186,32,7,50,primary care,0
+M0159,33024,10,21,50,cardiology,0
+M0160,33309,4,22,19,primary care,1
+M0161,33025,11,13,42,cardiology,0
+M0162,33317,2,15,40,primary care,0
+M0163,33139,21,26,67,primary care,0
+M0164,33309,1,22,69,orthopedic surgery,1
+M0165,33012,16,17,31,primary care,0
+M0166,33176,30,14,56,primary care,0
+M0167,33014,19,11,82,primary care,0
+M0168,33309,4,23,38,endocrinology,0
+M0169,33309,2,20,62,primary care,0
+M0170,33309,0,25,30,dermatology,0
+M0171,33012,16,15,26,primary care,0
+M0172,33135,23,18,66,ob-gyn,0
+M0173,33027,8,8,40,dermatology,0
+M0174,33015,18,17,42,primary care,0
+M0175,33135,21,18,68,primary care,1
+M0176,33309,1,22,27,primary care,0
+M0177,33155,28,12,87,primary care,0
+M0178,33012,19,17,58,primary care,0
+M0179,33024,13,18,35,primary care,1
+M0180,33030,37,4,73,primary care,0
+M0181,33176,29,17,39,primary care,1
+M0182,33012,18,16,66,dermatology,0
+M0183,33309,0,21,76,orthopedic surgery,0
+M0184,33135,23,18,39,primary care,0
+M0185,33155,27,14,55,psychiatry,0
+M0186,33012,18,18,54,ob-gyn,0
+M0187,33015,18,18,63,primary care,0
+M0188,33024,8,20,38,primary care,0
+M0189,33176,33,17,38,primary care,0
+M0190,33176,33,13,58,cardiology,0
+M0191,33155,25,15,84,primary care,0
+M0192,33176,32,14,42,primary care,0
+M0193,33155,24,18,90,primary care,0
+M0194,33176,27,12,60,primary care,0
+M0195,33012,17,15,74,psychiatry,0
+M0196,33024,10,20,58,primary care,0
+M0197,33024,10,16,25,psychiatry,0
+M0198,33317,6,17,57,orthopedic surgery,0
+M0199,33025,14,16,51,primary care,0
+M0200,33309,1,20,40,psychiatry,0
+M0201,33014,19,12,57,primary care,0
+M0202,33176,27,17,61,psychiatry,0
+M0203,33030,37,7,62,primary care,0
+M0204,33317,2,15,29,dermatology,0
+M0205,33024,8,19,52,orthopedic surgery,0
+M0206,33155,23,16,66,primary care,0
+M0207,33156,25,18,85,psychiatry,1
+M0208,33176,32,14,36,primary care,0
+M0209,33024,12,16,67,primary care,0
+M0210,33176,29,17,82,cardiology,0
+M0211,33025,9,15,43,orthopedic surgery,0
+M0212,33012,16,12,89,cardiology,0
+M0213,33015,15,14,58,psychiatry,0
+M0214,33030,34,9,63,cardiology,0
+M0215,33027,12,7,72,orthopedic surgery,0
+M0216,33135,19,18,78,primary care,0
+M0217,33024,14,16,64,endocrinology,0
+M0218,33024,14,22,66,primary care,1
+M0219,33029,5,5,95,ob-gyn,0
+M0220,33025,12,15,60,primary care,0
+M0221,33309,3,24,53,primary care,0
+M0222,33024,14,22,53,dermatology,0
+M0223,33186,33,10,40,primary care,0
+M0224,33012,17,12,65,psychiatry,0
+M0225,33024,8,19,64,primary care,0
+M0226,33176,31,15,52,dermatology,0
+M0227,33186,34,6,80,primary care,0
+M0228,33155,24,14,60,orthopedic surgery,0
+M0229,33135,21,23,50,primary care,0
+M0230,33317,4,13,69,dermatology,0
+M0231,33309,6,19,82,ob-gyn,0
+M0232,33025,10,11,40,primary care,0
+M0233,33024,9,22,63,orthopedic surgery,0
+M0234,33012,16,18,22,psychiatry,0
+M0235,33027,8,10,75,psychiatry,0
+M0236,33139,22,26,66,primary care,0
+M0237,33135,21,21,71,orthopedic surgery,0
+M0238,33012,17,18,69,dermatology,0
+M0239,33025,10,14,67,orthopedic surgery,0
+M0240,33155,28,15,54,ob-gyn,0
+M0241,33014,18,10,60,primary care,0
+M0242,33012,16,16,55,primary care,0
+M0243,33176,30,17,56,primary care,0
+M0244,33176,28,12,56,ob-gyn,0
+M0245,33015,15,18,42,primary care,0
+M0246,33135,25,23,48,psychiatry,0
+M0247,33024,11,21,59,orthopedic surgery,0
+M0248,33024,13,18,31,primary care,0
+M0249,33012,16,16,71,dermatology,0
+M0250,33030,37,4,56,primary care,0
+M0251,33030,35,10,77,primary care,1
+M0252,33139,21,24,39,ob-gyn,0
+M0253,33176,33,15,72,endocrinology,0
+M0254,33014,16,13,53,primary care,0
+M0255,33317,4,12,63,primary care,1
+M0256,33309,0,25,45,ob-gyn,1
+M0257,33139,23,25,56,primary care,0
+M0258,33176,32,16,53,ob-gyn,0
+M0259,33015,16,15,59,ob-gyn,0
+M0260,33156,30,17,87,primary care,1
+M0261,33025,11,16,69,primary care,0
+M0262,33024,12,21,75,primary care,0
+M0263,33024,14,22,69,primary care,0
+M0264,33030,37,10,18,primary care,0
+M0265,33139,25,23,32,cardiology,0
+M0266,33176,29,11,88,primary care,1
+M0267,33135,21,22,56,primary care,0
+M0268,33176,30,13,45,primary care,0
+M0269,33012,16,12,72,endocrinology,1
+M0270,33309,2,20,34,orthopedic surgery,0
+M0271,33024,14,16,84,primary care,0
+M0272,33317,8,13,90,cardiology,1
+M0273,33139,20,25,40,primary care,0
+M0274,33024,9,19,56,orthopedic surgery,0
+M0275,33015,14,17,95,primary care,0
+M0276,33025,8,12,54,psychiatry,0
+M0277,33024,8,18,19,primary care,0
+M0278,33156,25,22,79,cardiology,0
+M0279,33309,1,22,70,psychiatry,0
+M0280,33176,29,16,48,psychiatry,0
+M0281,33014,15,14,59,primary care,0
+M0282,33024,14,21,67,primary care,1
+M0283,33176,27,12,86,primary care,0
+M0284,33135,23,18,50,psychiatry,0
+M0285,33029,6,9,83,primary care,0
+M0286,33012,17,18,47,primary care,0
+M0287,33317,4,12,74,primary care,0
+M0288,33012,16,12,57,primary care,0
+M0289,33186,30,7,68,primary care,0
+M0290,33015,16,17,64,cardiology,1
+M0291,33309,6,22,64,primary care,0
+M0292,33176,31,15,23,primary care,1
+M0293,33156,31,20,57,primary care,0
+M0294,33027,8,11,50,ob-gyn,0
+M0295,33012,16,16,31,orthopedic surgery,0
+M0296,33012,21,17,58,primary care,0
+M0297,33176,30,14,53,psychiatry,0
+M0298,33015,15,19,18,primary care,0
+M0299,33156,26,21,64,primary care,0
+M0300,33309,5,23,64,primary care,0
+M0301,33024,11,22,57,dermatology,1
+M0302,33014,17,16,62,primary care,0
+M0303,33024,11,17,39,psychiatry,0
+M0304,33176,29,14,89,primary care,0
+M0305,33176,33,12,44,primary care,1
+M0306,33012,19,14,40,psychiatry,1
+M0307,33155,25,15,56,primary care,0
+M0308,33176,29,12,63,ob-gyn,0
+M0309,33012,15,15,51,primary care,0
+M0310,33317,8,15,28,primary care,0
+M0311,33027,8,6,80,orthopedic surgery,0
+M0312,33176,33,16,72,orthopedic surgery,0
+M0313,33024,14,19,67,cardiology,0
+M0314,33030,38,9,78,primary care,0
+M0315,33015,14,18,59,primary care,0
+M0316,33156,27,20,42,psychiatry,0
+M0317,33309,2,20,26,psychiatry,0
+M0318,33012,16,12,67,psychiatry,0
+M0319,33309,2,21,49,primary care,0
+M0320,33186,30,6,69,dermatology,0
+M0321,33176,33,11,31,psychiatry,0
+M0322,33317,6,14,95,primary care,0
+M0323,33015,14,20,54,primary care,0
+M0324,33139,23,25,42,primary care,0
+M0325,33155,28,14,53,primary care,0
+M0326,33014,14,16,62,cardiology,0
+M0327,33030,34,8,77,primary care,1
+M0328,33012,18,13,82,dermatology,1
+M0329,33030,34,4,52,primary care,0
+M0330,33176,30,13,56,ob-gyn,0
+M0331,33135,20,20,59,primary care,0
+M0332,33139,23,26,45,primary care,0
+M0333,33176,29,15,36,primary care,0
+M0334,33155,25,14,59,primary care,0
+M0335,33155,23,14,55,primary care,0
+M0336,33024,14,18,86,primary care,0
+M0337,33176,32,12,71,primary care,0
+M0338,33014,18,13,63,primary care,0
+M0339,33024,12,19,39,primary care,0
+M0340,33156,28,22,38,ob-gyn,0
+M0341,33176,29,11,80,primary care,0
+M0342,33015,14,16,22,ob-gyn,0
+M0343,33027,9,6,67,primary care,0
+M0344,33025,8,15,61,psychiatry,0
+M0345,33135,19,17,36,dermatology,0
+M0346,33186,35,6,50,primary care,0
+M0347,33309,4,19,68,primary care,0
+M0348,33012,18,12,38,primary care,0
+M0349,33156,25,20,42,orthopedic surgery,0
+M0350,33029,10,9,62,primary care,0
+M0351,33186,31,12,44,primary care,0
+M0352,33024,10,17,45,psychiatry,0
+M0353,33176,27,11,45,primary care,0
+M0354,33027,11,6,51,primary care,0
+M0355,33176,29,17,47,psychiatry,0
+M0356,33015,14,16,31,primary care,0
+M0357,33156,29,17,33,primary care,1
+M0358,33012,17,15,20,primary care,0
+M0359,33012,19,18,46,primary care,0
+M0360,33015,17,19,74,primary care,0
+M0361,33014,18,12,55,endocrinology,0
+M0362,33015,18,15,63,psychiatry,0
+M0363,33155,22,15,77,primary care,0
+M0364,33024,12,21,81,primary care,0
+M0365,33186,32,10,62,primary care,0
+M0366,33024,13,18,46,primary care,0
+M0367,33176,31,13,45,primary care,0
+M0368,33156,27,22,77,orthopedic surgery,0
+M0369,33176,27,14,64,orthopedic surgery,0
+M0370,33135,20,21,60,primary care,0
+M0371,33186,29,10,74,orthopedic surgery,0
+M0372,33155,27,13,66,endocrinology,0
+M0373,33024,14,22,58,cardiology,0
+M0374,33015,14,16,46,orthopedic surgery,0
+M0375,33155,23,17,53,primary care,0
+M0376,33030,38,4,70,orthopedic surgery,0
+M0377,33015,15,14,88,psychiatry,1
+M0378,33015,16,19,58,primary care,0
+M0379,33015,16,18,60,primary care,0
+M0380,33029,11,9,74,dermatology,0
+M0381,33309,3,20,40,cardiology,0
+M0382,33317,3,15,68,orthopedic surgery,1
+M0383,33015,15,17,48,endocrinology,0
+M0384,33176,33,15,48,primary care,0
+M0385,33156,30,20,28,primary care,0
+M0386,33155,23,15,60,endocrinology,0
+M0387,33014,14,15,62,primary care,0
+M0388,33176,30,12,19,cardiology,0
+M0389,33030,35,4,48,primary care,0
+M0390,33025,14,12,75,primary care,1
+M0391,33030,34,7,59,ob-gyn,0
+M0392,33156,25,20,58,orthopedic surgery,0
+M0393,33012,21,15,49,primary care,0
+M0394,33024,12,19,44,primary care,0
+M0395,33025,12,15,35,endocrinology,0
+M0396,33317,7,18,63,primary care,0
+M0397,33139,22,26,46,cardiology,0
+M0398,33012,21,13,87,dermatology,0
+M0399,33024,10,17,44,endocrinology,0
+M0400,33015,17,14,55,primary care,0
+M0401,33015,17,20,50,ob-gyn,0
+M0402,33014,18,12,77,psychiatry,0
+M0403,33012,19,14,82,primary care,0
+M0404,33014,17,13,41,primary care,0
+M0405,33030,37,4,63,primary care,0
+M0406,33309,3,20,62,ob-gyn,0
+M0407,33309,1,22,55,psychiatry,0
+M0408,33135,23,17,65,dermatology,0
+M0409,33156,26,18,66,cardiology,0
+M0410,33176,28,15,24,primary care,0
+M0411,33027,11,6,50,psychiatry,0
+M0412,33012,16,17,53,orthopedic surgery,0
+M0413,33025,10,13,43,primary care,0
+M0414,33030,37,5,43,orthopedic surgery,0
+M0415,33027,7,6,65,cardiology,0
+M0416,33135,21,20,53,endocrinology,0
+M0417,33029,8,7,72,orthopedic surgery,0
+M0418,33025,8,15,58,cardiology,1
+M0419,33029,5,8,61,primary care,0
+M0420,33317,3,13,46,primary care,0
+M0421,33024,11,18,69,primary care,1
+M0422,33176,31,12,62,primary care,0
+M0423,33186,31,7,62,primary care,0
+M0424,33155,25,16,37,psychiatry,0
+M0425,33029,11,6,82,primary care,1
+M0426,33015,15,19,50,primary care,0
+M0427,33135,20,22,61,ob-gyn,0
+M0428,33024,11,22,44,dermatology,0
+M0429,33309,5,24,31,primary care,0
+M0430,33176,28,15,48,primary care,0
+M0431,33309,2,19,38,primary care,0
+M0432,33030,39,7,65,psychiatry,0
+M0433,33317,2,15,78,dermatology,0
+M0434,33012,20,17,52,endocrinology,0
+M0435,33155,23,13,77,cardiology,0
+M0436,33030,39,4,40,primary care,0
+M0437,33025,12,13,43,endocrinology,0
+M0438,33176,30,12,57,orthopedic surgery,0
+M0439,33135,22,19,59,endocrinology,0
+M0440,33024,14,19,27,endocrinology,0
+M0441,33317,4,18,58,primary care,0
+M0442,33176,30,13,61,orthopedic surgery,0
+M0443,33030,35,7,48,orthopedic surgery,0
+M0444,33024,12,16,53,endocrinology,1
+M0445,33027,9,11,50,primary care,0
+M0446,33027,7,10,59,dermatology,0
+M0447,33139,23,25,61,primary care,0
+M0448,33015,12,18,48,primary care,0
+M0449,33012,15,18,61,primary care,0
+M0450,33024,8,16,64,psychiatry,1
+M0451,33135,20,22,64,ob-gyn,0
+M0452,33186,34,8,95,primary care,0
+M0453,33012,18,16,34,psychiatry,1
+M0454,33014,14,16,78,primary care,0
+M0455,33030,35,9,57,psychiatry,0
+M0456,33012,18,12,46,primary care,0
+M0457,33012,21,18,60,cardiology,0
+M0458,33015,18,19,67,orthopedic surgery,0
+M0459,33012,21,13,49,primary care,1
+M0460,33015,18,20,70,endocrinology,0
+M0461,33139,21,25,73,primary care,0
+M0462,33014,15,13,34,orthopedic surgery,0
+M0463,33025,8,11,38,primary care,0
+M0464,33024,14,18,95,endocrinology,1
+M0465,33176,33,13,27,endocrinology,0
+M0466,33030,39,8,87,primary care,0
+M0467,33012,20,13,74,primary care,0
+M0468,33027,8,5,52,primary care,0
+M0469,33027,12,5,48,primary care,0
+M0470,33015,12,15,21,primary care,0
+M0471,33309,1,23,60,psychiatry,0
+M0472,33012,16,14,50,primary care,0
+M0473,33156,30,17,60,primary care,0
+M0474,33176,32,17,72,psychiatry,1
+M0475,33030,36,8,28,dermatology,1
+M0476,33156,30,19,49,dermatology,0
+M0477,33317,7,13,64,primary care,0
+M0478,33027,8,9,66,primary care,0
+M0479,33027,12,7,71,primary care,0
+M0480,33015,18,16,59,cardiology,0
+M0481,33015,16,17,65,ob-gyn,0
+M0482,33030,37,6,51,psychiatry,0
+M0483,33024,14,19,72,ob-gyn,0
+M0484,33027,10,7,52,primary care,0
+M0485,33155,23,16,41,ob-gyn,0
+M0486,33012,15,14,56,dermatology,0
+M0487,33186,30,11,68,primary care,0
+M0488,33155,28,14,45,primary care,0
+M0489,33030,38,8,80,primary care,0
+M0490,33317,5,12,95,psychiatry,0
+M0491,33029,7,4,39,primary care,0
+M0492,33176,29,14,58,endocrinology,0
+M0493,33309,0,24,94,dermatology,1
+M0494,33186,33,10,28,orthopedic surgery,0
+M0495,33029,11,6,67,primary care,1
+M0496,33015,15,15,58,primary care,0
+M0497,33027,8,10,54,primary care,0
+M0498,33156,29,19,59,cardiology,0
+M0499,33012,15,17,65,primary care,0
+M0500,33139,23,27,74,primary care,1
+M0501,33012,15,13,58,cardiology,0
+M0502,33176,27,17,59,dermatology,0
+M0503,33176,30,15,61,cardiology,0
+M0504,33176,33,11,62,primary care,0
+M0505,33029,9,9,42,primary care,0
+M0506,33156,30,16,42,primary care,0
+M0507,33155,25,18,74,primary care,1
+M0508,33155,26,12,45,primary care,0
+M0509,33186,31,6,69,primary care,0
+M0510,33029,10,5,63,primary care,0
+M0511,33176,31,13,44,primary care,0
+M0512,33015,18,20,71,primary care,0
+M0513,33014,17,14,65,primary care,0
+M0514,33317,8,15,60,psychiatry,0
+M0515,33024,8,21,24,cardiology,0
+M0516,33176,30,17,62,primary care,0
+M0517,33176,32,17,74,primary care,0
+M0518,33317,4,16,78,primary care,0
+M0519,33317,8,18,45,primary care,1
+M0520,33317,8,12,42,primary care,0
+M0521,33015,14,18,90,cardiology,0
+M0522,33024,13,18,72,primary care,0
+M0523,33176,27,17,64,primary care,0
+M0524,33015,16,20,53,primary care,0
+M0525,33029,10,5,18,primary care,0
+M0526,33135,20,22,60,endocrinology,0
+M0527,33025,10,15,57,primary care,0
+M0528,33030,34,10,72,endocrinology,1
+M0529,33012,17,13,23,primary care,0
+M0530,33030,38,7,55,primary care,0
+M0531,33012,19,13,68,ob-gyn,0
+M0532,33176,31,12,20,cardiology,0
+M0533,33029,8,8,84,psychiatry,0
+M0534,33012,21,14,95,primary care,1
+M0535,33012,15,18,71,primary care,0
+M0536,33156,25,20,85,orthopedic surgery,0
+M0537,33317,2,14,58,ob-gyn,0
+M0538,33155,26,18,31,primary care,0
+M0539,33030,34,6,69,primary care,0
+M0540,33030,37,7,70,primary care,0
+M0541,33014,19,10,50,primary care,0
+M0542,33012,18,18,50,endocrinology,0
+M0543,33156,30,20,67,dermatology,1
+M0544,33027,10,11,51,orthopedic surgery,0
+M0545,33317,4,17,29,endocrinology,0
+M0546,33012,19,12,45,primary care,0
+M0547,33176,27,12,53,primary care,1
+M0548,33024,12,20,77,primary care,0
+M0549,33012,21,18,32,primary care,0
+M0550,33015,14,16,53,ob-gyn,0
+M0551,33135,25,20,62,primary care,0
+M0552,33176,33,16,67,cardiology,0
+M0553,33176,31,15,51,endocrinology,0
+M0554,33176,30,14,48,primary care,0
+M0555,33186,29,8,59,primary care,0
+M0556,33024,11,18,25,primary care,0
+M0557,33024,8,16,46,primary care,0
+M0558,33012,16,15,69,dermatology,0
+M0559,33024,14,21,67,ob-gyn,0
+M0560,33135,25,20,61,endocrinology,1
+M0561,33030,39,7,61,primary care,1
+M0562,33012,18,18,59,primary care,0
+M0563,33025,8,15,57,psychiatry,0
+M0564,33029,8,7,45,cardiology,0
+M0565,33135,24,18,48,endocrinology,1
+M0566,33027,12,10,75,primary care,0
+M0567,33139,20,26,64,dermatology,0
+M0568,33309,5,19,87,dermatology,0
+M0569,33309,4,22,58,ob-gyn,0
+M0570,33135,23,17,54,orthopedic surgery,0
+M0571,33186,31,9,27,primary care,0
+M0572,33309,0,20,51,primary care,0
+M0573,33014,14,12,62,orthopedic surgery,0
+M0574,33024,10,20,43,orthopedic surgery,0
+M0575,33015,18,18,66,primary care,0
+M0576,33014,19,14,57,primary care,0
+M0577,33135,24,21,66,primary care,0
+M0578,33176,28,15,22,ob-gyn,0
+M0579,33014,15,15,82,ob-gyn,0
+M0580,33176,28,14,80,primary care,0
+M0581,33012,15,18,65,primary care,0
+M0582,33025,10,14,68,primary care,0
+M0583,33135,23,22,44,primary care,0
+M0584,33176,30,15,41,endocrinology,0
+M0585,33012,16,18,74,orthopedic surgery,0
+M0586,33156,31,16,68,orthopedic surgery,0
+M0587,33015,14,16,30,primary care,0
+M0588,33015,17,19,25,primary care,0
+M0589,33176,31,16,61,primary care,0
+M0590,33176,29,16,54,primary care,0
+M0591,33014,15,15,47,primary care,0
+M0592,33012,19,13,57,primary care,0
+M0593,33155,22,14,46,orthopedic surgery,0
+M0594,33012,17,13,55,endocrinology,0
+M0595,33139,20,27,59,psychiatry,0
+M0596,33176,28,16,77,orthopedic surgery,0
+M0597,33176,30,16,54,orthopedic surgery,0
+M0598,33012,15,13,56,ob-gyn,0
+M0599,33014,16,16,85,primary care,0
+M0600,33030,39,6,40,primary care,0
