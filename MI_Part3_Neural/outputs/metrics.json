@@ -1,0 +1,422 @@
+{
+  "tabular": [
+    {
+      "model": "Project 2 best: logistic regression, balanced",
+      "features": "Tabular (16 columns)",
+      "val_accuracy": 0.7133,
+      "test_accuracy": 0.7063,
+      "test_macro_f1": 0.5652,
+      "test_ece": 0.019,
+      "test_recall_high": 0.6721,
+      "test_roc_auc": 0.7554,
+      "test_pr_auc": 0.3394,
+      "params": 18,
+      "train_seconds": 0.01,
+      "notes": "Traditional baseline"
+    },
+    {
+      "model": "Gaussian Naive Bayes",
+      "features": "Tabular",
+      "val_accuracy": 0.8441,
+      "test_accuracy": 0.8637,
+      "test_macro_f1": 0.6162,
+      "test_ece": 0.108,
+      "test_recall_high": 0.2984,
+      "test_roc_auc": 0.7359,
+      "test_pr_auc": 0.2534,
+      "params": 68,
+      "train_seconds": 0.0,
+      "notes": "Fast; assumes features are independent"
+    },
+    {
+      "model": "MLP (128-64, dropout 0.2, class weights)",
+      "features": "Tabular",
+      "val_accuracy": 0.7319,
+      "test_accuracy": 0.7103,
+      "test_macro_f1": 0.5653,
+      "test_ece": 0.033,
+      "test_recall_high": 0.6525,
+      "test_roc_auc": 0.7553,
+      "test_pr_auc": 0.3344,
+      "params": 10690,
+      "train_seconds": 1.34,
+      "notes": "stopped at epoch 9 (kept epoch 1)"
+    },
+    {
+      "model": "Ablation: no dropout",
+      "features": "Tabular",
+      "val_accuracy": 0.7281,
+      "test_accuracy": 0.7203,
+      "test_macro_f1": 0.5697,
+      "test_ece": 0.0323,
+      "test_recall_high": 0.6328,
+      "test_roc_auc": 0.7543,
+      "test_pr_auc": 0.3357,
+      "params": 10690,
+      "train_seconds": 1.06,
+      "notes": "stopped at epoch 9 (kept epoch 1)"
+    },
+    {
+      "model": "Ablation: half the hidden units (64-32)",
+      "features": "Tabular",
+      "val_accuracy": 0.7385,
+      "test_accuracy": 0.7303,
+      "test_macro_f1": 0.5784,
+      "test_ece": 0.0363,
+      "test_recall_high": 0.6393,
+      "test_roc_auc": 0.7551,
+      "test_pr_auc": 0.3344,
+      "params": 3298,
+      "train_seconds": 0.93,
+      "notes": "stopped at epoch 9 (kept epoch 1)"
+    },
+    {
+      "model": "Ablation: no class weights",
+      "features": "Tabular",
+      "val_accuracy": 0.8852,
+      "test_accuracy": 0.9017,
+      "test_macro_f1": 0.5117,
+      "test_ece": 0.0124,
+      "test_recall_high": 0.0393,
+      "test_roc_auc": 0.7464,
+      "test_pr_auc": 0.3184,
+      "params": 10690,
+      "train_seconds": 1.36,
+      "notes": "stopped at epoch 9 (kept epoch 1)"
+    },
+    {
+      "model": "MLP + MC Dropout (20 passes)",
+      "features": "Tabular",
+      "val_accuracy": 0.7326,
+      "test_accuracy": 0.712,
+      "test_macro_f1": 0.564,
+      "test_ece": 0.0363,
+      "test_recall_high": 0.6361,
+      "test_roc_auc": 0.7548,
+      "test_pr_auc": 0.3331,
+      "params": 10690,
+      "train_seconds": 1.34,
+      "notes": "Average of 20 dropout passes; variance = uncertainty"
+    },
+    {
+      "model": "HMM (2 states, cost bands)",
+      "features": "Monthly cost sequence",
+      "val_accuracy": 0.8293,
+      "test_accuracy": 0.854,
+      "test_macro_f1": 0.5896,
+      "test_ece": 0.0103,
+      "test_recall_high": 0.2525,
+      "test_roc_auc": 0.673,
+      "test_pr_auc": 0.2242,
+      "params": 14,
+      "train_seconds": 1.54,
+      "notes": "Interpretable tables; yes/no line P >= 0.147"
+    }
+  ],
+  "vision": [
+    {
+      "model": "CNN, clean training",
+      "training_images": 840,
+      "val_accuracy": 1.0,
+      "test_accuracy": 1.0,
+      "test_macro_f1": 1.0,
+      "test_ece": 0.0,
+      "messy_accuracy": 0.9033,
+      "messy_macro_f1": 0.9019,
+      "messy_ece": 0.0669,
+      "params": 132451,
+      "train_seconds": 7.49
+    },
+    {
+      "model": "CNN + augmentation",
+      "training_images": 2520,
+      "val_accuracy": 1.0,
+      "test_accuracy": 1.0,
+      "test_macro_f1": 1.0,
+      "test_ece": 0.0,
+      "messy_accuracy": 0.97,
+      "messy_macro_f1": 0.97,
+      "messy_ece": 0.0233,
+      "params": 132451,
+      "train_seconds": 11.7
+    }
+  ],
+  "hmm": {
+    "spell_line_dollars": 4033.95,
+    "start": [
+      0.891,
+      0.109
+    ],
+    "transition": [
+      [
+        0.9685,
+        0.0315
+      ],
+      [
+        0.3142,
+        0.6858
+      ]
+    ],
+    "emission": [
+      [
+        0.5128,
+        0.425,
+        0.0622,
+        0.0001
+      ],
+      [
+        0.1744,
+        0.3459,
+        0.2564,
+        0.2234
+      ]
+    ],
+    "flag_line": 0.1472,
+    "viterbi_example": {
+      "member_id": "M0558",
+      "months": [
+        "2025-01",
+        "2025-02",
+        "2025-03",
+        "2025-04",
+        "2025-05",
+        "2025-06",
+        "2025-07",
+        "2025-08",
+        "2025-09",
+        "2025-10",
+        "2025-11",
+        "2025-12",
+        "2026-01",
+        "2026-02"
+      ],
+      "cost_band": [
+        1,
+        1,
+        0,
+        0,
+        0,
+        3,
+        0,
+        1,
+        0,
+        0,
+        3,
+        2,
+        1,
+        0
+      ],
+      "viterbi_state": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        0,
+        1,
+        1,
+        0,
+        0
+      ]
+    }
+  },
+  "mc_dropout_most_uncertain": [
+    {
+      "member_id": "M1150",
+      "month": "2026-02",
+      "age": 56,
+      "chronic_conditions": 1,
+      "er_visits_6m": 2,
+      "cost_prior_12m": 60270.37,
+      "p_high_mc": 0.5740000009536743,
+      "sd_mc": 0.16699999570846558,
+      "truly_high": 0,
+      "cost_next_3m": 1841.33
+    },
+    {
+      "member_id": "M0080",
+      "month": "2026-02",
+      "age": 68,
+      "chronic_conditions": 3,
+      "er_visits_6m": 0,
+      "cost_prior_12m": 53953.58,
+      "p_high_mc": 0.5929999947547913,
+      "sd_mc": 0.14000000059604645,
+      "truly_high": 0,
+      "cost_next_3m": 2835.51
+    },
+    {
+      "member_id": "M1455",
+      "month": "2026-02",
+      "age": 40,
+      "chronic_conditions": 1,
+      "er_visits_6m": 1,
+      "cost_prior_12m": 98114.18,
+      "p_high_mc": 0.3370000123977661,
+      "sd_mc": 0.13899999856948853,
+      "truly_high": 0,
+      "cost_next_3m": 142.85
+    },
+    {
+      "member_id": "M1455",
+      "month": "2026-01",
+      "age": 40,
+      "chronic_conditions": 1,
+      "er_visits_6m": 1,
+      "cost_prior_12m": 98158.99,
+      "p_high_mc": 0.3659999966621399,
+      "sd_mc": 0.13500000536441803,
+      "truly_high": 0,
+      "cost_next_3m": 112.38
+    }
+  ],
+  "error_counts": {
+    "False alarm: risky profile (age, conditions), stayed low": 589,
+    "False alarm: expensive last year, quiet next quarter": 174,
+    "Missed: warning signs, but under the line": 55,
+    "Missed: little history, then a big quarter": 51
+  },
+  "error_examples": [
+    {
+      "error_type": "False alarm: expensive last year, quiet next quarter",
+      "age": 61,
+      "chronic_conditions": 2,
+      "er_visits_6m": 0,
+      "cost_prior_12m": 23959.21,
+      "p_high": 0.6480000019073486,
+      "cost_next_3m": 612.04
+    },
+    {
+      "error_type": "False alarm: expensive last year, quiet next quarter",
+      "age": 62,
+      "chronic_conditions": 3,
+      "er_visits_6m": 2,
+      "cost_prior_12m": 22683.47,
+      "p_high": 0.6190000176429749,
+      "cost_next_3m": 2027.68
+    },
+    {
+      "error_type": "False alarm: risky profile (age, conditions), stayed low",
+      "age": 71,
+      "chronic_conditions": 2,
+      "er_visits_6m": 0,
+      "cost_prior_12m": 3350.42,
+      "p_high": 0.5239999890327454,
+      "cost_next_3m": 735.05
+    },
+    {
+      "error_type": "False alarm: risky profile (age, conditions), stayed low",
+      "age": 54,
+      "chronic_conditions": 3,
+      "er_visits_6m": 2,
+      "cost_prior_12m": 11750.59,
+      "p_high": 0.6150000095367432,
+      "cost_next_3m": 3149.64
+    },
+    {
+      "error_type": "Missed: little history, then a big quarter",
+      "age": 40,
+      "chronic_conditions": 0,
+      "er_visits_6m": 0,
+      "cost_prior_12m": 2514.13,
+      "p_high": 0.25699999928474426,
+      "cost_next_3m": 5377.79
+    },
+    {
+      "error_type": "Missed: little history, then a big quarter",
+      "age": 29,
+      "chronic_conditions": 1,
+      "er_visits_6m": 0,
+      "cost_prior_12m": 2196.67,
+      "p_high": 0.11699999868869781,
+      "cost_next_3m": 6124.85
+    },
+    {
+      "error_type": "Missed: warning signs, but under the line",
+      "age": 48,
+      "chronic_conditions": 3,
+      "er_visits_6m": 0,
+      "cost_prior_12m": 4143.91,
+      "p_high": 0.48100000619888306,
+      "cost_next_3m": 6627.81
+    },
+    {
+      "error_type": "Missed: warning signs, but under the line",
+      "age": 73,
+      "chronic_conditions": 1,
+      "er_visits_6m": 0,
+      "cost_prior_12m": 5602.82,
+      "p_high": 0.4869999885559082,
+      "cost_next_3m": 5856.12
+    }
+  ],
+  "subgroups": [
+    {
+      "group": "age_band = 18-44",
+      "rows": 734,
+      "high_cost_rate": 0.045,
+      "flag_rate": 0.011,
+      "recall": 0.0
+    },
+    {
+      "group": "age_band = 45-64",
+      "rows": 1306,
+      "high_cost_rate": 0.066,
+      "flag_rate": 0.176,
+      "recall": 0.337
+    },
+    {
+      "group": "age_band = 65+",
+      "rows": 960,
+      "high_cost_rate": 0.194,
+      "flag_rate": 0.754,
+      "recall": 0.914
+    },
+    {
+      "group": "plan_type = Marketplace",
+      "rows": 913,
+      "high_cost_rate": 0.074,
+      "flag_rate": 0.206,
+      "recall": 0.25
+    },
+    {
+      "group": "plan_type = Medicaid",
+      "rows": 1099,
+      "high_cost_rate": 0.044,
+      "flag_rate": 0.045,
+      "recall": 0.25
+    },
+    {
+      "group": "plan_type = Medicare Advantage",
+      "rows": 946,
+      "high_cost_rate": 0.195,
+      "flag_rate": 0.758,
+      "recall": 0.918
+    },
+    {
+      "group": "plan_type = Unknown",
+      "rows": 42,
+      "high_cost_rate": 0.119,
+      "flag_rate": 0.19,
+      "recall": 0.2
+    },
+    {
+      "group": "county = Broward",
+      "rows": 1082,
+      "high_cost_rate": 0.103,
+      "flag_rate": 0.286,
+      "recall": 0.631
+    },
+    {
+      "group": "county = Miami-Dade",
+      "rows": 1918,
+      "high_cost_rate": 0.101,
+      "flag_rate": 0.34,
+      "recall": 0.665
+    }
+  ]
+}

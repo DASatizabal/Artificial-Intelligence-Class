@@ -1,0 +1,7 @@
+# tested with: torch 2.15.0 (CPU), numpy 2.5.3, pandas 3.0.5, scikit-learn 1.9.1, matplotlib 3.11.2, pillow 12.3.0
+torch>=2.2
+numpy>=1.26
+pandas>=2.0
+scikit-learn>=1.4
+matplotlib>=3.8
+pillow>=10.0

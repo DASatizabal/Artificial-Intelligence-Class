@@ -14,7 +14,7 @@ MI predicts cost           ->  AI (CSP) uses cost to assign doctors fairly
 |---|---|---|---|---|
 | 1 | Search + CSP: A* travel miles, assign members to doctors | Done (healthcare version) | Audit + EDA + regression: predict next-quarter cost | Done |
 | 2 | Perception: sort paperwork images | Done | Classification: high-cost flag | Done |
-| 3 | NLP + rules: understand requests, check policy, block injections | Done | Neural models | Not started |
+| 3 | NLP + rules: understand requests, check policy, block injections | Done | Neural models: MLP, CNN, HMM, calibration | Done |
 | 4 | Probabilistic reasoning, RL, adversarial search | Waiting on instructions | Sequences + transformers | Waiting on instructions |
 | 5 | Multi-agent defense swarm | Opens Nov 16 | Final integrated system (capstone) | Opens Nov 23 |
 
@@ -25,6 +25,7 @@ MI predicts cost           ->  AI (CSP) uses cost to assign doctors fairly
 | `AI_Part2_Perception/` | Synthetic document images, from-scratch softmax classifier, augmentation, confusion matrices, routing, notebook |
 | `MI_Part1_EDA_Regression/` | Member-month claims data (31,563 rows), audit, EDA charts, baseline regression, notebook |
 | `MI_Part2_Classification/` | High-cost flag pipeline, cross-validation by member, confusion matrices, ROC/PR curves, flags for the AI planner, notebook |
+| `MI_Part3_Neural/` | MLP vs MI Part 2, CNN on document images, HMM + Naive Bayes, MC Dropout, calibration, ablations, error and subgroup analysis, notebook |
 | `AI_Part3_NLP_KR/` | Intent model, slot parser, rule base with proof traces, JSON outputs, notebook, APA report |
 | `docs/` | Revised term project proposal (Word) and a plain-language explanation of every Part |
 
@@ -42,6 +43,7 @@ python src/gen_members.py
 python src/run_part1.py
 ```
 For MI Part 2, use `MI_Part2_Classification`, `python src/gen_claims.py`, then `python src/run_mi_part2.py`.
+For MI Part 3, use `MI_Part3_Neural`, `pip install -r requirements.txt`, `python src/gen_claims.py`, `python src/gen_docs.py`, then `python src/run_part3.py`.
 For AI Part 3, use `AI_Part3_NLP_KR`, `python src/gen_data.py`, then `python src/run_part3.py`.
 For AI Part 2, use `AI_Part2_Perception`, `python src/gen_docs.py`, then `python src/run_part2.py`.
 For MI Part 1, use `MI_Part1_EDA_Regression`, `python src/gen_claims.py`, then `python src/run_mi_part1.py`.
@@ -51,4 +53,5 @@ For MI Part 1, use `MI_Part1_EDA_Regression`, `python src/gen_claims.py`, then `
 - **AI Part 2:** from-scratch softmax classifier reads claim forms, referrals and enrollment forms at 100% on clean scans; augmentation lifts messy-scan accuracy from 78% to 99.7%; a 70% confidence threshold routes 99.3% automatically with zero wrong routes.
 - **MI Part 1:** 31,563 member-months, top 10% of rows = 66.1% of cost. Linear regression average miss $2,168 vs $2,446 for guessing the average (R² 0.084). Members 9+ miles from a PCP cost about $2,700 next quarter vs $1,840 within 2 miles.
 - **MI Part 2:** the "always no" baseline is 90% accurate and catches nobody; balanced logistic regression catches 66.9% of next quarter's high-cost members (ROC-AUC 0.752, PR-AUC 0.337) and hands the riskiest 10% to the AI planner.
+- **MI Part 3:** the MLP ties balanced logistic regression (ROC-AUC 0.755 both), so the simpler model stays champion; a CNN reads messy scans at 90.3% vs 78.0% for the softmax (clean training); a 2-state HMM explains high-cost spells with readable tables; removing class weights drops recall from 0.65 to 0.04; the flag misses high-cost members aged 18 to 44.
 - **AI Part 3:** intent accuracy .9945 on held-out requests and .8333 on new wording; slots exact when the intent is right; all 10 injection attempts detected with no false alarms.

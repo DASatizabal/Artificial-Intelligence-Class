@@ -253,3 +253,88 @@ For each type: 280 to train on, 60 to decide when to stop training, 60 for the f
 - Same skill (sorting into buckets), and the same report card (the confusion matrix).
 - AI reads the claim forms, and those claims become the data MI learns from.
 - MI's high-cost flag goes straight to the AI planner (Part 1's CSP) to spread heavy patients and set placement order.
+
+---
+
+## Part 3: Understand language, and learn deeper patterns
+
+### What we built for AI Part 3 (Nov 4)
+
+**Job:** turn "Find a Spanish speaking cardiologist within 10 miles of 33024" into action.
+
+- **The data:** 606 made-up member requests across 4 intents (find a provider, check network, change PCP, report an access problem), plus 36 requests I wrote by hand in new wording to test the model honestly.
+- **Intent (what do they want?):** bag-of-words + logistic regression. Count the words, learn which words point to which intent.
+- **Slots (the details):** pattern matching pulls out the ZIP, distance, time and doctor name. A word list maps "heart doctor" to cardiology.
+- **Rulebook:** 22 "IF this AND that, THEN do this" rules fired like dominoes (forward chaining). Every answer comes with a receipt of which rules fired (a proof trace).
+- **Bouncer:** messages like "ignore the rules" get blocked no matter what.
+
+**Results:**
+
+| Measure | Result |
+|---|---|
+| Intent on familiar wording | 99.5% |
+| Intent on new wording | 83.3% (the model memorized the practice test) |
+| Details pulled out correctly when the intent was right | 100% |
+| Sneaky "ignore the rules" messages caught | 10 of 10, no false alarms |
+
+**Fixes to the professor's starter code:** it graded itself on the same sentences it trained on, grabbed "33" out of ZIP codes as a time, crashed on unknown buildings, and only coded 1 of its 3 rules.
+
+### What we built for MI Part 3 (Nov 9)
+
+Three questions, three kinds of model.
+
+**1. Does a neural network beat MI Part 2's champion on the high-cost flag? No, it ties.**
+- **MLP** = layers of tiny calculators (128, then 64). ReLU only passes positive signals forward. Dropout benches 20% of the calculators at random during practice so the team doesn't lean on one star.
+- **Result:** it ranks members exactly as well as logistic regression (0.755 vs 0.755) while using about 600 times more parameters. The pattern in this data is mostly a straight line (older + more conditions + more cost last year), so a model that can bend has nothing extra to find. **The simpler model stays champion.**
+- **It learned everything in one pass.** After epoch 1, training error kept falling but validation got worse. That means it was memorizing the training members. Early stopping kept the epoch-1 version.
+
+**2. Can a network that looks at shapes read messy scans better? Yes, when practice data is clean.**
+- **CNN** = a magnifying glass that slides small 3 x 3 pattern-finders over the whole page, then shrinks the picture. A checkbox counts as a checkbox wherever it lands.
+
+| Model | Messy scans |
+|---|---|
+| AI Part 2 softmax, clean practice only | 78% |
+| **CNN, clean practice only** | **90%** |
+| Softmax + augmentation | 99.7% |
+| CNN + augmentation | 97% |
+
+- Without augmentation, the CNN wins by 12 points. With augmentation, the simple softmax catches up and slightly wins, because these documents are simple.
+- **Saliency map** = a heat map of which pixels changed the answer. On a correct claim form it lights up the grid of boxes. On a wrong one it's smeared across noise. The model guessed because the evidence was blurry.
+
+**3. Can a simple probability model explain expensive stretches? Yes, and you can read every number.**
+- **HMM** = like guessing the season (hidden) from today's temperature (what you see). Hidden: is the member in an expensive stretch? Seen: this month's bill size.
+- Counting from the training months (+1 to every count so nothing is ever exactly zero):
+  - A normal member has a 3% chance of starting an expensive stretch next month.
+  - A member in a stretch has a 69% chance of staying in it.
+  - In a stretch, 22% of months are $5,000+. Normally, almost never.
+- **Viterbi** = the most likely hidden story behind a member's bills.
+- It predicts worse (0.67) because it only sees bill sizes, but its percentages are the most honest of all the models.
+
+**How sure is the model?**
+- **MC Dropout** = ask the same question 20 times with different calculators benched. Answers that spread a lot mean "not sure." The most unsure cases were members with a giant bill last year and few other warning signs: was it a one-time event? Those should go to a person.
+- **Calibration** = when the model says 60%, does it happen 60% of the time?
+  - **Weighting the rare class makes the percentages lie.** The weighted models say about 60% when the real answer is about 15%, because we told them to fear misses.
+  - The unweighted MLP's percentages are honest, but it barely flags anyone.
+  - **Use the weighted model to rank members, not to quote percentages.**
+
+**Ablations (remove one piece, see what breaks):**
+
+| Removed | Effect |
+|---|---|
+| Dropout | Almost nothing |
+| Half the calculators | Almost nothing (the big network was wasted) |
+| **Class weights** | **Recall collapses from 65% to 4%.** The single most important choice |
+
+**The mistakes, sorted:**
+- 589 false alarms: older, with conditions, but stayed low (people overlap)
+- 174 false alarms: expensive last year, quiet next quarter (one-time events)
+- 55 close calls just under the line
+- 51 "came out of nowhere": nothing in the record pointed to it. No model can catch these.
+
+**Fairness:**
+- The flag catches 91% of high-cost seniors.
+- It catches **0% of high-cost members aged 18 to 44**, and 25% on Medicaid.
+- Part of that is real: seniors really are high-cost more often (19% vs 4.5%). But the gap in catching people is too big.
+- **Fixes:** separate lines by age group, more signals than age, and a person reviewing young members with sudden ER visits.
+
+**Responsible AI:** the flag is for outreach calls, **never for denying care**. Unsure cases go to a person. And since I wrote the data's rules myself, these results show the method, not real-world truth.
