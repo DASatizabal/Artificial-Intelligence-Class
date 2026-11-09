@@ -1,0 +1,118 @@
+{
+  "high_cost_cutoff_dollars": 3904.47,
+  "train_rows": 13500,
+  "test_rows": 3000,
+  "train_positive_rate": 0.1,
+  "test_positive_rate": 0.1017,
+  "cv": [
+    {
+      "model": "Majority baseline (always 'no')",
+      "accuracy_mean": 0.9,
+      "precision_mean": 0.0,
+      "recall_mean": 0.0,
+      "f1_mean": 0.0,
+      "roc_auc_mean": 0.5,
+      "pr_auc_mean": 0.1,
+      "recall_sd": 0.0,
+      "roc_auc_sd": 0.0
+    },
+    {
+      "model": "Logistic regression",
+      "accuracy_mean": 0.9019,
+      "precision_mean": 0.5677,
+      "recall_mean": 0.0785,
+      "f1_mean": 0.1363,
+      "roc_auc_mean": 0.761,
+      "pr_auc_mean": 0.3096,
+      "recall_sd": 0.0299,
+      "roc_auc_sd": 0.015
+    },
+    {
+      "model": "Logistic regression, balanced",
+      "accuracy_mean": 0.7019,
+      "precision_mean": 0.1994,
+      "recall_mean": 0.6547,
+      "f1_mean": 0.3054,
+      "roc_auc_mean": 0.76,
+      "pr_auc_mean": 0.3087,
+      "recall_sd": 0.0496,
+      "roc_auc_sd": 0.0138
+    },
+    {
+      "model": "Decision tree, balanced",
+      "accuracy_mean": 0.6622,
+      "precision_mean": 0.1826,
+      "recall_mean": 0.6742,
+      "f1_mean": 0.2865,
+      "roc_auc_mean": 0.7214,
+      "pr_auc_mean": 0.2389,
+      "recall_sd": 0.0495,
+      "roc_auc_sd": 0.0211
+    }
+  ],
+  "test": [
+    {
+      "model": "Majority baseline (always 'no')",
+      "accuracy": 0.8983,
+      "precision": 0.0,
+      "recall": 0.0,
+      "f1": 0.0,
+      "roc_auc": 0.5,
+      "pr_auc": 0.1017
+    },
+    {
+      "model": "Logistic regression",
+      "accuracy": 0.9027,
+      "precision": 0.7241,
+      "recall": 0.0689,
+      "f1": 0.1257,
+      "roc_auc": 0.7528,
+      "pr_auc": 0.3366
+    },
+    {
+      "model": "Logistic regression, balanced",
+      "accuracy": 0.7047,
+      "precision": 0.2063,
+      "recall": 0.6689,
+      "f1": 0.3153,
+      "roc_auc": 0.7523,
+      "pr_auc": 0.3372
+    },
+    {
+      "model": "Decision tree, balanced",
+      "accuracy": 0.6207,
+      "precision": 0.1728,
+      "recall": 0.7213,
+      "f1": 0.2788,
+      "roc_auc": 0.7124,
+      "pr_auc": 0.2562
+    }
+  ],
+  "lr_balanced_coefficients": {
+    "age": 0.628,
+    "plan_type_Unknown": -0.487,
+    "chronic_conditions": 0.361,
+    "cost_prior_12m": 0.324,
+    "plan_type_Marketplace": 0.299,
+    "saw_pcp_last_3m": -0.195,
+    "sex_F": -0.191,
+    "county_Broward": -0.154,
+    "admits_12m": -0.126,
+    "er_visits_6m": 0.115
+  },
+  "tree_importances": {
+    "age": 0.578,
+    "cost_prior_12m": 0.244,
+    "chronic_conditions": 0.074,
+    "cost_prior_3m": 0.025,
+    "cost_month": 0.021,
+    "plan_type_Marketplace": 0.017,
+    "county_Miami-Dade": 0.011,
+    "miles_to_pcp": 0.01
+  },
+  "flags_for_ai_planner": {
+    "members": 600,
+    "flagged": 60,
+    "would_be_flagged_at_0.5": 195
+  }
+}

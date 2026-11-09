@@ -224,6 +224,31 @@ For each type: 280 to train on, 60 to decide when to stop training, 60 for the f
 | Recall | Of the members who really were high-cost, how many did we catch? |
 | ROC-AUC | Pick one high-cost and one normal member at random. How often does the model rank the high-cost one higher? |
 
+### What we actually built for MI Part 2 (Nov 9)
+
+**The question:** will this member be high-cost next quarter? "High-cost" = the top 10%, which works out to $3,904 or more next quarter. That line was set from the training months only.
+
+**The no-cheating rules:**
+- **Same split as MI Part 1:** train on Jan to Sep 2025, skip 3 months, test on Jan to Feb 2026.
+- **Practice tests (cross-validation) keep each member in one group.** Otherwise the model could study a member's March row and get tested on their April row, which is almost the same thing. Like seeing the answer key from yesterday's quiz.
+
+**The four models on the test months (305 members really became high-cost):**
+
+| Model | Caught | Missed | False alarms | Plain meaning |
+|---|---|---|---|---|
+| Always say "no" | 0 | 305 | 0 | 90% accurate and totally useless (the accuracy trap) |
+| Logistic regression | 21 | 284 | 8 | Learned that "no" is usually safe |
+| **Logistic regression, balanced** | **204** | **101** | **785** | **The champion** |
+| Decision tree, balanced | 220 | 85 | 1,053 | Catches 16 more, but 268 more false alarms |
+
+**"Balanced"** = each missed high-cost member counts about 9 times more during training, because "no" is 9 times more common. Same skill, just not afraid to say yes. Recall went from 7% to 67%.
+
+**Precision of 21%** means about 1 in 5 flagged members really becomes high-cost. For a $250 outreach call aimed at a $3,900+ quarter, that can still be worth it. The exact cut-off will come from costs in the capstone.
+
+**What pushes risk up:** age, chronic conditions, last year's cost. **What pushes it down:** a recent PCP visit (the access link again).
+
+**Hand-off to the AI planner:** the model scores the 600 AI Part 1 members and flags the riskiest 60 (10%). That replaces the placeholder flag the planner was using. At the default 50% line it would have flagged 195, too many for the planner's per-doctor cap.
+
 **How Part 2 AI and MI connect:**
 - Same skill (sorting into buckets), and the same report card (the confusion matrix).
 - AI reads the claim forms, and those claims become the data MI learns from.
