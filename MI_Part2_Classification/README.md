@@ -28,4 +28,4 @@ Or open `MI_Part2_Classification.ipynb` in Colab and run all cells. It clones th
 Champion: balanced logistic regression (best F1 and PR-AUC; the tree catches 16 more members but raises 268 more false alarms).
 
 ## Hand-off
-`outputs/predicted_high_cost_flags.csv`: predicted probability and flag for the 600 AI Part 1 members (latest test month). The riskiest 60 (10%) are flagged; 195 would be flagged at a 0.5 cut-off, too many for the planner's per-doctor cap.
+`outputs/predicted_high_cost_flags.csv`: predicted probability and flag for the 600 AI Part 1 members (latest test month). The riskiest 60 (10%) are flagged; 195 would be flagged at a 0.5 cut-off, too many for the planner's per-doctor cap. The AI Part 1 planner does not read this file yet (next integration step).

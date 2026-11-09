@@ -77,12 +77,16 @@ Real-world version: when a big provider group leaves the network, the network te
 
 **Stress test: a big doctor group leaves.** Pinecrest Medical Group (15 doctors) leaves, and 73 members lose their doctor.
 
-| Way to recover | Placed afterward | Unaffected members moved |
-|---|---|---|
-| Min-conflicts (fix only what broke) | 401 | 14 |
-| Start over from scratch | 402 | 26 |
+| Way to recover | Placed afterward | Unaffected members who lost their doctor | Unaffected members switched |
+|---|---|---|---|
+| Min-conflicts (fix only what broke) | 401 | 10 | 4 |
+| Start over from scratch | 402 | 12 | 14 |
 
-Almost the same coverage, but repair moves fewer people. Every move is a member forced to change doctors.
+Almost the same coverage, but repair disturbs fewer people (14 vs 26). Every move is a member forced to change doctors.
+
+**Honest notes:**
+- **Both methods bump some unaffected members** to the waitlist. There aren't enough open seats near Pinecrest, so people who live closer win the seats.
+- **Min-conflicts never fully settled:** it used all 3,000 of its allowed steps.
 
 ### MI Part 1: EDA + Regression
 
@@ -120,7 +124,7 @@ Almost the same coverage, but repair moves fewer people. Every move is a member 
 | 63 rows loaded twice | Removed |
 | 472 rows missing plan type | Labeled "Unknown" instead of throwing them away |
 | 40 negative monthly costs | Kept, because they're refunds (claim reversals) |
-| Middle member costs $435 a quarter, average is $1,736 | The top 10% of rows are 66% of all cost. A few people drive most of the spending |
+| Middle member costs $472 a quarter, average is $1,967 | The top 10% of rows are 65% of all cost. A few people drive most of the spending |
 
 **What the data showed:**
 - More chronic conditions means more cost: about $900 a quarter with none, over $10,000 with 5 or more.
@@ -202,7 +206,10 @@ For each type: 280 to train on, 60 to decide when to stop training, 60 for the f
 - If it's less sure, a person checks it.
 - On the 300 messy scans: 99.3% were routed automatically with **zero wrong routes**, and 2 went to a person.
 
-**Honest note:** 100% on clean scans happens because the synthetic layouts are very different from each other. Real forms would be harder.
+**Honest notes:**
+- **100% on clean scans** happens because the synthetic layouts are very different from each other. Real forms would be harder.
+- **99.7% on messy scans is optimistic.** The practice copies used the same kinds of damage as the messy test scans, so the model practiced on the test's kind of mess. Real scanners do things we didn't simulate (folds, stamps, faxes).
+- **The 70% line** was picked on the same messy scans it's reported on. A fair version would pick it on separate scans first.
 
 ### MI Part 2: Classification Pipeline (the risk flag)
 
@@ -247,7 +254,7 @@ For each type: 280 to train on, 60 to decide when to stop training, 60 for the f
 
 **What pushes risk up:** age, chronic conditions, last year's cost. **What pushes it down:** a recent PCP visit (the access link again).
 
-**Hand-off to the AI planner:** the model scores the 600 AI Part 1 members and flags the riskiest 60 (10%). That replaces the placeholder flag the planner was using. At the default 50% line it would have flagged 195, too many for the planner's per-doctor cap.
+**Hand-off to the AI planner:** the model scores the 600 AI Part 1 members and flags the riskiest 60 (10%). This list is ready to replace the placeholder flag in the planner. The planner does not read it yet; wiring it in is the next integration step. At the default 50% line it would have flagged 195, too many for the planner's per-doctor cap.
 
 **How Part 2 AI and MI connect:**
 - Same skill (sorting into buckets), and the same report card (the confusion matrix).
@@ -308,7 +315,8 @@ Three questions, three kinds of model.
   - A member in a stretch has a 69% chance of staying in it.
   - In a stretch, 22% of months are $5,000+. Normally, almost never.
 - **Viterbi** = the most likely hidden story behind a member's bills.
-- It predicts worse (0.67) because it only sees bill sizes, but its percentages are the most honest of all the models.
+- It predicts worse (0.67) because it only sees bill sizes, but every number in it can be explained to a care manager.
+- **Honest limit:** the "hidden" state is really calculated from last-3-month cost, which is how we could count the tables directly. A true HMM learns states it can't see (Baum-Welch).
 
 **How sure is the model?**
 - **MC Dropout** = ask the same question 20 times with different calculators benched. Answers that spread a lot mean "not sure." The most unsure cases were members with a giant bill last year and few other warning signs: was it a one-time event? Those should go to a person.
@@ -328,7 +336,7 @@ Three questions, three kinds of model.
 **The mistakes, sorted:**
 - 589 false alarms: older, with conditions, but stayed low (people overlap)
 - 174 false alarms: expensive last year, quiet next quarter (one-time events)
-- 55 close calls just under the line
+- 55 had some cost history, but the model stayed under the 50% line (median 42%)
 - 51 "came out of nowhere": nothing in the record pointed to it. No model can catch these.
 
 **Fairness:**

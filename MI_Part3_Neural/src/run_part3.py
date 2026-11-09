@@ -93,7 +93,7 @@ def tabular_track():
     hmm_info["viterbi_example"] = {"member_id": ex["member_id"].iloc[0], "months": ex["month"].tolist(),
                                    "cost_band": band(ex["cost_month"]).tolist(), "viterbi_state": hmm.viterbi(band(ex["cost_month"].to_numpy()))}
 
-    feats = {"Project 2 best: logistic regression, balanced": "Tabular (16 columns)", "Gaussian Naive Bayes": "Tabular",
+    feats = {"Project 2 best: logistic regression, balanced": "Tabular (17 features)", "Gaussian Naive Bayes": "Tabular",
              "HMM (2 states, cost bands)": "Monthly cost sequence"}
     for name, (pv, pt, params, secs, note) in P.items():
         th = thresholds.get(name)
@@ -129,6 +129,17 @@ def tabular_track():
         return None
     t["error_type"] = t.apply(cause, axis=1)
     err_counts = t["error_type"].value_counts().to_dict()
+    err_p = t.dropna(subset=["error_type"]).groupby("error_type")["p_high"].describe()[["min", "50%", "max"]].round(3)
+    err_p.columns = ["p_min", "p_median", "p_max"]
+    # confusion matrix for the main MLP on the test months
+    cm = confusion_matrix(y["test"], t["pred"], labels=[0, 1])
+    fig, ax = plt.subplots(figsize=(4.2, 3.8)); ax.imshow(cm, cmap="Blues")
+    for i in range(2):
+        for j in range(2):
+            ax.text(j, i, f"{cm[i, j]:,}", ha="center", va="center", color="white" if cm[i, j] > cm.max() / 2 else "black")
+    ax.set_xticks([0, 1], ["not high", "high"]); ax.set_yticks([0, 1], ["not high", "high"]); ax.set_xlabel("predicted"); ax.set_ylabel("true")
+    ax.set_title("MLP (class weights) on the test months", fontsize=9)
+    plt.tight_layout(); plt.savefig(OUT / "mlp_confusion_test.png", dpi=140); plt.close()
     err_examples = pd.concat([g.head(2) for _, g in t.dropna(subset=["error_type"]).groupby("error_type")])[
         ["error_type", "age", "chronic_conditions", "er_visits_6m", "cost_prior_12m", "p_high", "cost_next_3m"]]
     # subgroup check (fairness)
@@ -141,7 +152,7 @@ def tabular_track():
                 sub.append({"group": f"{col} = {k}", "rows": len(g), "high_cost_rate": round(g["truly_high"].mean(), 3),
                             "flag_rate": round(g["pred"].mean(), 3), "recall": round(recall_score(g["truly_high"], g["pred"]), 3)})
     sub = pd.DataFrame(sub)
-    return table, logs, hmm_info, uncertain, err_counts, err_examples, sub
+    return table, logs, hmm_info, uncertain, err_counts, err_examples, sub, err_p, cm
 
 
 def augment(X, rng, copies=2):
@@ -196,13 +207,15 @@ def vision_track():
 
 def main():
     set_seed()
-    table, tab_logs, hmm_info, uncertain, err_counts, err_examples, sub = tabular_track()
+    table, tab_logs, hmm_info, uncertain, err_counts, err_examples, sub, err_p, mlp_cm = tabular_track()
     vis, vis_logs = vision_track()
 
     fig, ax = plt.subplots(1, 2, figsize=(11, 3.8))
     for name, log in tab_logs.items():
-        d = pd.DataFrame(log); ax[0].plot(d.epoch, d.val_loss, label=name.split(" (")[0] if name.startswith("MLP") else name)
-    ax[0].set_title("Tabular MLPs: validation loss (kept epoch = best validation ROC-AUC)"); ax[0].set_xlabel("epoch"); ax[0].legend(fontsize=7)
+        d = pd.DataFrame(log); ax[0].plot(d.epoch, d.val_loss, label=(name.split(" (")[0] if name.startswith("MLP") else name) + " val")
+    d = pd.DataFrame(tab_logs["MLP (128-64, dropout 0.2, class weights)"])
+    ax[0].plot(d.epoch, d.train_loss, "k--", label="MLP train")
+    ax[0].set_title("Tabular MLPs: training vs validation loss", fontsize=10); ax[0].set_xlabel("epoch"); ax[0].legend(fontsize=7)
     for name, log in vis_logs.items():
         d = pd.DataFrame(log); ax[1].plot(d.epoch, d.train_loss, "--", label=f"{name} train"); ax[1].plot(d.epoch, d.val_loss, label=f"{name} val")
     ax[1].set_title("Document CNNs: training and validation loss"); ax[1].set_xlabel("epoch"); ax[1].legend(fontsize=7)
@@ -213,7 +226,8 @@ def main():
     with open(OUT / "metrics.json", "w") as fh:
         json.dump({"tabular": table.to_dict("records"), "vision": vis.to_dict("records"), "hmm": hmm_info,
                    "mc_dropout_most_uncertain": uncertain.to_dict("records"), "error_counts": err_counts,
-                   "error_examples": err_examples.to_dict("records"), "subgroups": sub.to_dict("records")}, fh, indent=2, default=str)
+                   "error_examples": err_examples.to_dict("records"), "error_probability_ranges": err_p.reset_index().to_dict("records"),
+                   "mlp_confusion_test": mlp_cm.tolist(), "subgroups": sub.to_dict("records")}, fh, indent=2, default=str)
     pd.set_option("display.width", 250); pd.set_option("display.max_columns", 20)
     print(table.drop(columns=["notes"]).to_string(index=False)); print(vis.to_string(index=False))
     print(json.dumps(hmm_info, indent=1)[:1500]); print(uncertain.to_string(index=False)); print(err_counts)

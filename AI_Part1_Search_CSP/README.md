@@ -42,4 +42,4 @@ Step limit: 200,000 per specialty. Backtrack counts come from `outputs/search_co
 
 - Placed 465 of 600 members (77.5%) inside the CMS standard, 4.88 miles on average, zero capacity or high-cost cap violations.
 - 77 distance gaps (no doctor inside the standard) and 58 capacity gaps (nearby doctors full).
-- Stress test (Pinecrest Medical Group, 15 doctors, leaves; 73 members displaced): min-conflicts repair ends with 401 placed and moves 14 unaffected members; solving from scratch ends with 402 placed but moves 26.
+- Stress test (Pinecrest Medical Group, 15 doctors, leaves; 73 members displaced): min-conflicts repair ends with 401 placed, and 10 unaffected members lose their doctor and 4 switch; solving from scratch ends with 402 placed, and 12 unaffected members lose their doctor and 14 switch. Min-conflicts used its full 3,000-step budget without settling.

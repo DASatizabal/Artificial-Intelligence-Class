@@ -13,11 +13,55 @@
       "best_epoch": 73,
       "test": {
         "accuracy": 1.0,
-        "macro_f1": 1.0
+        "macro_f1": 1.0,
+        "per_class_f1": {
+          "claim_form": 1.0,
+          "referral": 1.0,
+          "enrollment_form": 1.0
+        },
+        "confusion_matrix_rows_true_cols_pred": [
+          [
+            60,
+            0,
+            0
+          ],
+          [
+            0,
+            60,
+            0
+          ],
+          [
+            0,
+            0,
+            60
+          ]
+        ]
       },
       "messy": {
         "accuracy": 0.78,
-        "macro_f1": 0.7854
+        "macro_f1": 0.7854,
+        "per_class_f1": {
+          "claim_form": 0.7085,
+          "referral": 0.8681,
+          "enrollment_form": 0.7795
+        },
+        "confusion_matrix_rows_true_cols_pred": [
+          [
+            79,
+            2,
+            19
+          ],
+          [
+            21,
+            79,
+            0
+          ],
+          [
+            23,
+            1,
+            76
+          ]
+        ]
       }
     },
     "Softmax + augmentation": {
@@ -25,11 +69,55 @@
       "best_epoch": 71,
       "test": {
         "accuracy": 1.0,
-        "macro_f1": 1.0
+        "macro_f1": 1.0,
+        "per_class_f1": {
+          "claim_form": 1.0,
+          "referral": 1.0,
+          "enrollment_form": 1.0
+        },
+        "confusion_matrix_rows_true_cols_pred": [
+          [
+            60,
+            0,
+            0
+          ],
+          [
+            0,
+            60,
+            0
+          ],
+          [
+            0,
+            0,
+            60
+          ]
+        ]
       },
       "messy": {
         "accuracy": 0.9967,
-        "macro_f1": 0.9967
+        "macro_f1": 0.9967,
+        "per_class_f1": {
+          "claim_form": 0.995,
+          "referral": 1.0,
+          "enrollment_form": 0.995
+        },
+        "confusion_matrix_rows_true_cols_pred": [
+          [
+            99,
+            0,
+            1
+          ],
+          [
+            0,
+            100,
+            0
+          ],
+          [
+            0,
+            0,
+            100
+          ]
+        ]
       }
     }
   },

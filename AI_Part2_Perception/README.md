@@ -31,3 +31,5 @@ Or open `AI_Part2_Perception.ipynb` in Colab and run all cells. It clones this r
 | **Softmax + augmentation** | **2,520** | **1.000** | **0.997** |
 
 Routing at a 70% confidence threshold on the messy scans: 99.3% routed automatically with zero wrong routes, 2 sent to a person.
+
+Caveats: the augmentation uses the same kinds of distortion as the messy-scan generator, so 0.997 is optimistic for real scans; the 70% threshold was chosen on the same messy set it is reported on. Per-class F1 and confusion counts are in `outputs/metrics.json`.

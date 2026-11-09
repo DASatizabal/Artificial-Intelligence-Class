@@ -23,16 +23,18 @@ Seeds: `torch.manual_seed(42)`, NumPy seed 42, `torch.use_deterministic_algorith
 | `run_part3.py` | Trains everything, Gaussian NB, ablations, error analysis, subgroup check, plots |
 
 ## Outputs (outputs/)
-`comparison_tabular.csv`, `comparison_vision.csv`, `training_logs.csv`, `metrics.json`, `training_curves.png`, `reliability_diagram.png`, `cnn_confusion_messy.png`, `cnn_saliency.png`
+`comparison_tabular.csv`, `comparison_vision.csv`, `training_logs.csv`, `metrics.json`, `training_curves.png`, `reliability_diagram.png`, `mlp_confusion_test.png`, `cnn_confusion_messy.png`, `cnn_saliency.png`
 
 ## Comparison vs MI Part 2 (high-cost flag, test months)
 | Model | Features | Val Acc | F1 (macro) | ROC-AUC | ECE | Params | Train time | Notes |
 |---|---|---|---|---|---|---|---|---|
-| Project 2 best (logistic regression, balanced) | Tabular | 0.713 | 0.565 | 0.755 | 0.019 | 18 | < 0.1 s | Traditional baseline |
+| Project 2 best (logistic regression, balanced) | Tabular (17 features) | 0.713 | 0.565 | 0.755 | 0.019 | 18 | < 0.1 s | Traditional baseline |
 | MLP (class weights) | Tabular | 0.732 | 0.565 | 0.755 | 0.033 | 10,690 | about 1 s | Kept epoch 1 |
 | MLP + MC Dropout (20 passes) | Tabular | 0.733 | 0.564 | 0.755 | 0.036 | 10,690 | about 1 s | Variance = uncertainty |
 | Gaussian Naive Bayes | Tabular | 0.844 | 0.616 | 0.736 | 0.108 | 68 | fast | Interpretable |
-| HMM (2 states) | Monthly cost sequence | 0.829 | 0.590 | 0.673 | 0.010 | 14 | about 2 s | Interpretable tables |
+| HMM (2 states) | Monthly cost sequence | 0.829 | 0.590 | 0.673 | 0.010* | 14 | about 2 s | Interpretable tables |
+
+ECE follows the assignment's definition (confidence of the chosen answer). *For the HMM that answer is almost always "no", so its low ECE says little; `reliability_diagram.png` checks P(high-cost) directly and shows the class-weighted models overstate risk about 2 to 3 times. "Project 2 best" is refit on the same 80% of training members as the MLP (test ROC-AUC 0.755 here vs 0.752 in MI Part 2). The MLP keeps its epoch-1 weights: validation ROC-AUC peaks after one pass and training loss keeps falling while validation loss rises (see `training_curves.png`). MLP test confusion matrix: `mlp_confusion_test.png` (199 of 305 high-cost caught, 763 false alarms).
 
 ## Deep track: CNN on document images
 | Model | Clean test | Messy scans |

@@ -70,6 +70,10 @@ def main():
         results[name] = {"training_images": len(Xa), "best_epoch": m.best_epoch,
                          "test": scores(yte, m.predict(sc.transform(flatten(Xte)))),
                          "messy": scores(yms, m.predict(sc.transform(flatten(Xms))))}
+        for sname, X, y in (("test", Xte, yte), ("messy", Xms, yms)):
+            yp = m.predict(sc.transform(flatten(X)))
+            results[name][sname]["per_class_f1"] = dict(zip(CLASSES, f1_score(y, yp, average=None, labels=[0, 1, 2]).round(4).tolist()))
+            results[name][sname]["confusion_matrix_rows_true_cols_pred"] = confusion_matrix(y, yp, labels=[0, 1, 2]).tolist()
 
     # confusion matrices: rows = model, columns = test set
     fig, axes = plt.subplots(2, 2, figsize=(9, 8))

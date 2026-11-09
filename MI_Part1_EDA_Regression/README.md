@@ -36,5 +36,5 @@ Train Jan to Sep 2025 · gap Oct to Dec 2025 · test Jan to Feb 2026. The gap ke
 | **Linear regression** | **$2,168** | **$7,426** | **0.084** |
 | Log model (typical member) | $1,834 | $8,099 | -0.090 |
 
-- Top 10% of rows = 66.1% of all cost.
+- Top 10% of rows = 64.8% of all cost (median $472, mean $1,967). EDA charts and these descriptive numbers use all months; models only learn from training months.
 - Members 9+ miles from a PCP: 13.8% saw a PCP recently (vs 69.3% within 2 miles), 1.16 ER visits in 6 months (vs 0.54), $2,704 next-quarter cost (vs $1,839).

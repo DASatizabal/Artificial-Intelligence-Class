@@ -81,35 +81,35 @@
       "method": "Backtracking + forward checking",
       "nodes": 408276,
       "backtracks": 285856,
-      "seconds": 1.85,
+      "seconds": 2.084,
       "specialties_solved": 5
     },
     {
       "method": "MRV + FC + LCV",
       "nodes": 200237,
       "backtracks": 148599,
-      "seconds": 3.354,
+      "seconds": 3.057,
       "specialties_solved": 6
     },
     {
       "method": "MRV + FC + look-ahead",
       "nodes": 480,
       "backtracks": 0,
-      "seconds": 0.924,
+      "seconds": 0.764,
       "specialties_solved": 7
     },
     {
       "method": "MRV + forward checking",
       "nodes": 200237,
       "backtracks": 162899,
-      "seconds": 2.811,
+      "seconds": 3.064,
       "specialties_solved": 6
     },
     {
       "method": "Plain backtracking",
       "nodes": 416759,
       "backtracks": 416415,
-      "seconds": 1.9100000000000001,
+      "seconds": 1.914,
       "specialties_solved": 5
     }
   ],
@@ -126,6 +126,12 @@
     "full_resolve": {
       "other_members_moved": 26,
       "placed": 402
+    },
+    "unaffected_members": {
+      "min_conflicts_lost_doctor": 10,
+      "min_conflicts_switched_doctor": 4,
+      "full_resolve_lost_doctor": 12,
+      "full_resolve_switched_doctor": 14
     },
     "after_min_conflicts": {
       "placed": 401,

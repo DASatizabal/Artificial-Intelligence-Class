@@ -107,12 +107,19 @@ def main():
     resolved, _, cap_gaps2 = solve_all(pl)
     others = [m for m in final if final[m] not in removed]
     full_moved = sum(1 for m in others if resolved.get(m) != final[m])
+    # unaffected members (doctor did not leave) who still changed: lost their doctor vs moved to another one
+    mc_lost = sum(1 for m in others if repaired.get(m) is None)
+    mc_switched = sum(1 for m in others if repaired.get(m) not in (None, final[m]))
+    full_lost = sum(1 for m in others if resolved.get(m) is None)
+    full_switched = sum(1 for m in others if resolved.get(m) not in (None, final[m]))
     clean_repair = {m: p for m, p in repaired.items() if p}
     after = summarize(pl, clean_repair, gaps2, [m for m, p in repaired.items() if p is None and m not in gaps2])
     after_full = summarize(pl, resolved, gaps2, cap_gaps2)
 
     stress = {"group_removed": group, "providers_removed": len(removed), "min_conflicts": mc,
               "full_resolve": {"other_members_moved": full_moved, "placed": after_full["placed"]},
+              "unaffected_members": {"min_conflicts_lost_doctor": mc_lost, "min_conflicts_switched_doctor": mc_switched,
+                                     "full_resolve_lost_doctor": full_lost, "full_resolve_switched_doctor": full_switched},
               "after_min_conflicts": {k: after[k] for k in ("placed", "share_placed_within_standard", "avg_miles", "capacity_violations")},
               "after_full_resolve": {k: after_full[k] for k in ("placed", "share_placed_within_standard", "avg_miles", "capacity_violations")}}
 
