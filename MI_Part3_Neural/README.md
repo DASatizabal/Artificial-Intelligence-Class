@@ -22,8 +22,11 @@ Seeds: `torch.manual_seed(42)`, NumPy seed 42, `torch.use_deterministic_algorith
 | `bayes_hmm.py` | 2-state HMM with +1 pseudo-counts, forward filter, Viterbi, 3-month-ahead risk |
 | `run_part3.py` | Trains everything, Gaussian NB, ablations, error analysis, subgroup check, plots |
 
+## Report
+`docs/MI_Part3_Neural_Report.pdf` (and the editable `.docx`): APA, 10 body pages, covering every section in the brief plus the four reflection prompts (architecture rationale, probabilistic justification, uncertainty discussion, ethics and impact).
+
 ## Outputs (outputs/)
-`comparison_tabular.csv`, `comparison_vision.csv`, `training_logs.csv`, `metrics.json`, `training_curves.png`, `reliability_diagram.png`, `mlp_confusion_test.png`, `cnn_confusion_messy.png`, `cnn_saliency.png`
+`comparison_tabular.csv`, `comparison_vision.csv`, `training_logs.csv`, `metrics.json`, `training_curves.png`, `reliability_diagram.png`, `mlp_confusion_test.png`, `cnn_confusion_messy.png`, `cnn_saliency.png`, `report_fig_calibration_saliency.png` (Figure 2 in the report)
 
 ## Comparison vs MI Part 2 (high-cost flag, test months)
 | Model | Features | Val Acc | F1 (macro) | ROC-AUC | ECE | Params | Train time | Notes |
