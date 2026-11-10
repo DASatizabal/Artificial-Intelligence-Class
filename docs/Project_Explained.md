@@ -51,7 +51,8 @@ Real-world version: when a big provider group leaves the network, the network te
 
 ### What we actually built for AI Part 1 (Nov 9)
 
-- **600 made-up members**, each with a home location, the type of doctor they need, and a stand-in high-cost yes/no (until MI Part 2 builds the real one).
+- **600 made-up members**, each with a home location and the type of doctor they need.
+- **Who counts as high-cost comes from MI Part 2:** its model flags the riskiest 60 members (10%). The planner started with a made-up flag. The two lists only shared 10 members, so the real prediction changes who gets treated as a heavy patient.
 - **Open seats:** only in-network doctors accepting new patients have seats, and the seats add up to 115% of what's needed, so it's tight on purpose. Each doctor can take high-cost members for at most 35% of their seats.
 - **Each specialty is its own puzzle.** Cardiology seats have nothing to do with dermatology seats, so we solve them separately. Smaller puzzles are faster.
 
@@ -59,18 +60,18 @@ Real-world version: when a big provider group leaves the network, the network te
 
 | Method | Plain meaning | Solved (of 7) | Steps |
 |---|---|---|---|
-| Plain backtracking | Seat people in list order, undo when stuck | 5 | 416,759 |
-| + Forward checking | After each seat, cross off full doctors for everyone else | 5 | 408,276 |
-| MRV + forward checking | Also seat the pickiest member first | 6 | 200,237 |
-| + LCV | Also try the doctor that blocks the fewest others | 6 | 200,237 |
-| **+ Look-ahead** | **Before each seat, check that everyone still waiting can fit** | **7** | **480, no undoing** |
+| Plain backtracking | Seat people in list order, undo when stuck | 5 | 552,382 |
+| + Forward checking | After each seat, cross off full doctors for everyone else | 5 | 481,019 |
+| MRV + forward checking | Also seat the pickiest member first | 6 | 200,306 |
+| + LCV | Also try the doctor that blocks the fewest others | 6 | 200,354 |
+| **+ Look-ahead** | **Before each seat, check that everyone still waiting can fit** | **7** | **479, no undoing** |
 
 **Why the look-ahead was needed:** forward checking only notices when ONE member has no seat left. It can't see when a GROUP of members is fighting over too few seats, so the search walks into a dead end and keeps undoing. The look-ahead checks the whole group each time. Analogy: before seating a guest, the planner quickly counts whether the remaining guests still fit in the remaining chairs.
 
 **Why no AC-3:** AC-3 checks rules between two guests at a time. "A doctor has 8 seats" involves everyone who could pick that doctor, so it isn't a two-guest rule.
 
 **Results:**
-- 465 of 600 members (77.5%) placed inside the federal distance limit, 4.88 miles on average, no doctor over capacity.
+- 465 of 600 members (77.5%) placed inside the federal distance limit, 4.85 miles on average, no doctor over capacity.
 - 77 members have **no doctor close enough** (fix: recruit doctors there).
 - 58 members have **close doctors that are full** (fix: more open seats).
 - Only cardiology and endocrinology hit the 90% target. Primary care was worst (71%) because its limit is just 5 miles.
@@ -79,10 +80,10 @@ Real-world version: when a big provider group leaves the network, the network te
 
 | Way to recover | Placed afterward | Unaffected members who lost their doctor | Unaffected members switched |
 |---|---|---|---|
-| Min-conflicts (fix only what broke) | 401 | 10 | 4 |
-| Start over from scratch | 402 | 12 | 14 |
+| Min-conflicts (fix only what broke) | 401 | 12 | 4 |
+| Start over from scratch | 402 | 12 | 8 |
 
-Almost the same coverage, but repair disturbs fewer people (14 vs 26). Every move is a member forced to change doctors.
+Almost the same coverage, and repair disturbs slightly fewer people (16 vs 20). Every move is a member forced to change doctors.
 
 **Honest notes:**
 - **Both methods bump some unaffected members** to the waitlist. There aren't enough open seats near Pinecrest, so people who live closer win the seats.
@@ -254,7 +255,7 @@ For each type: 280 to train on, 60 to decide when to stop training, 60 for the f
 
 **What pushes risk up:** age, chronic conditions, last year's cost. **What pushes it down:** a recent PCP visit (the access link again).
 
-**Hand-off to the AI planner:** the model scores the 600 AI Part 1 members and flags the riskiest 60 (10%). This list is ready to replace the placeholder flag in the planner. The planner does not read it yet; wiring it in is the next integration step. At the default 50% line it would have flagged 195, too many for the planner's per-doctor cap.
+**Hand-off to the AI planner:** the model scores the 600 AI Part 1 members and flags the riskiest 60 (10%). The planner now reads this list instead of its made-up flag. At the default 50% line it would have flagged 195, too many for the planner's per-doctor cap.
 
 **How Part 2 AI and MI connect:**
 - Same skill (sorting into buckets), and the same report card (the confusion matrix).

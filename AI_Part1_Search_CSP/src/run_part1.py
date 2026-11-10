@@ -88,6 +88,17 @@ def draw_map(pl, assign, gaps, cap_gaps, removed_group, path):
 def main():
     kb = KnowledgeBase(ROOT / "data" / "kb")
     members = pd.read_csv(ROOT / "data" / "members.csv", dtype={"zip": str})
+    # Use the high-cost flag MI Part 2 predicted (riskiest 10% by probability) instead of the placeholder.
+    # data/predicted_high_cost_flags.csv is copied from MI_Part2_Classification/outputs/.
+    flags_path = ROOT / "data" / "predicted_high_cost_flags.csv"
+    flag_source = "placeholder (gen_members.py)"
+    if flags_path.exists():
+        flags = pd.read_csv(flags_path)[["member_id", "high_cost_flag", "p_high_cost"]]
+        members = members.rename(columns={"high_cost": "high_cost_placeholder"}).merge(flags, on="member_id", how="left")
+        assert members["high_cost_flag"].notna().all(), "every member needs a predicted flag"
+        members["high_cost"] = members["high_cost_flag"].astype(int)
+        flag_source = "MI Part 2 prediction (balanced logistic regression, riskiest 10%)"
+    print("high-cost flag source:", flag_source, "| flagged:", int(members["high_cost"].sum()))
     slots = pd.read_csv(ROOT / "data" / "kb" / "provider_slots.csv")
     pl = Planner(kb, members, slots).build_domains()
     gaps = list(pl.gaps)
@@ -128,7 +139,8 @@ def main():
     search.to_csv(OUT / "search_comparison.csv", index=False)
     totals = search.groupby("method")[["nodes", "backtracks", "seconds"]].sum()
     totals["specialties_solved"] = search.groupby("method")["solved"].sum()
-    metrics = {"baseline": base, "search_totals": totals.reset_index().to_dict("records"), "stress_test": stress,
+    metrics = {"high_cost_flag_source": flag_source, "high_cost_flagged": int(members["high_cost"].sum()),
+               "baseline": base, "search_totals": totals.reset_index().to_dict("records"), "stress_test": stress,
                "astar": {"calls": kb.astar_calls, "node_expansions": kb.astar_expansions}}
     with open(OUT / "metrics.json", "w") as fh:
         json.dump(metrics, fh, indent=2, default=lambda o: o.item() if hasattr(o, "item") else str(o))

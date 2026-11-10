@@ -49,7 +49,7 @@ For AI Part 2, use `AI_Part2_Perception`, `python src/gen_docs.py`, then `python
 For MI Part 1, use `MI_Part1_EDA_Regression`, `python src/gen_claims.py`, then `python src/run_mi_part1.py`.
 
 ## Headline results
-- **AI Part 1:** MRV + forward checking + a max-flow look-ahead solved all 7 specialty puzzles in 480 steps with zero backtracks. Plain backtracking solved 5 of 7 in 416,759 steps. 465 of 600 members (77.5%) placed inside the CMS distance standard, 4.88 miles on average, no rule broken.
+- **AI Part 1:** uses MI Part 2's predicted high-cost flag. MRV + forward checking + a max-flow look-ahead solved all 7 specialty puzzles in 479 steps with zero backtracks. Plain backtracking solved 5 of 7 in 552,382 steps. 465 of 600 members (77.5%) placed inside the CMS distance standard, 4.85 miles on average, no rule broken.
 - **AI Part 2:** from-scratch softmax classifier reads claim forms, referrals and enrollment forms at 100% on clean scans; augmentation lifts messy-scan accuracy from 78% to 99.7%; a 70% confidence threshold routes 99.3% automatically with zero wrong routes.
 - **MI Part 1:** 31,563 member-months, top 10% of rows = 64.8% of cost. Linear regression average miss $2,168 vs $2,446 for guessing the average (R² 0.084). Members 9+ miles from a PCP cost about $2,700 next quarter vs $1,840 within 2 miles.
 - **MI Part 2:** the "always no" baseline is 90% accurate and catches nobody; balanced logistic regression catches 66.9% of next quarter's high-cost members (ROC-AUC 0.752, PR-AUC 0.337) and hands the riskiest 10% to the AI planner.

@@ -1,11 +1,11 @@
 specialty,method,members,nodes,backtracks,seconds,solved,lookaheads
-cardiology,Plain backtracking,41,200000,199973,0.449,False,
-cardiology,Backtracking + forward checking,41,200000,122545,0.542,False,
+cardiology,Plain backtracking,41,200000,199965,0.428,False,
+cardiology,Backtracking + forward checking,41,200000,136029,0.563,False,
 cardiology,MRV + forward checking,41,41,0,0.0,True,
 cardiology,MRV + FC + LCV,41,41,0,0.0,True,
-cardiology,MRV + FC + look-ahead,41,41,0,0.025,True,40.0
-dermatology,Plain backtracking,29,85,56,0.0,True,
-dermatology,Backtracking + forward checking,29,51,14,0.0,True,
+cardiology,MRV + FC + look-ahead,41,41,0,0.029,True,40.0
+dermatology,Plain backtracking,29,73,44,0.0,True,
+dermatology,Backtracking + forward checking,29,45,11,0.0,True,
 dermatology,MRV + forward checking,29,29,0,0.0,True,
 dermatology,MRV + FC + LCV,29,29,0,0.0,True,
 dermatology,MRV + FC + look-ahead,29,29,0,0.012,True,28.0
@@ -18,19 +18,19 @@ ob-gyn,Plain backtracking,44,44,0,0.0,True,
 ob-gyn,Backtracking + forward checking,44,44,0,0.0,True,
 ob-gyn,MRV + forward checking,44,44,0,0.0,True,
 ob-gyn,MRV + FC + LCV,44,44,0,0.001,True,
-ob-gyn,MRV + FC + look-ahead,44,44,0,0.028,True,43.0
-orthopedic surgery,Plain backtracking,44,8397,8353,0.019,True,
-orthopedic surgery,Backtracking + forward checking,44,6694,3915,0.018,True,
+ob-gyn,MRV + FC + look-ahead,44,44,0,0.026,True,43.0
+orthopedic surgery,Plain backtracking,44,8397,8353,0.018,True,
+orthopedic surgery,Backtracking + forward checking,44,6694,3915,0.016,True,
 orthopedic surgery,MRV + forward checking,44,44,0,0.0,True,
-orthopedic surgery,MRV + FC + LCV,44,44,0,0.001,True,
-orthopedic surgery,MRV + FC + look-ahead,44,44,0,0.026,True,43.0
-primary care,Plain backtracking,228,200000,199879,1.429,False,
-primary care,Backtracking + forward checking,228,200000,158617,1.52,False,
-primary care,MRV + forward checking,228,200000,162899,3.064,False,
-primary care,MRV + FC + LCV,228,200000,148599,3.054,False,
-primary care,MRV + FC + look-ahead,228,243,0,0.632,True,242.0
-psychiatry,Plain backtracking,38,56,18,0.0,True,
-psychiatry,Backtracking + forward checking,38,42,3,0.0,True,
-psychiatry,MRV + forward checking,38,38,0,0.0,True,
-psychiatry,MRV + FC + LCV,38,38,0,0.0,True,
-psychiatry,MRV + FC + look-ahead,38,38,0,0.013,True,37.0
+orthopedic surgery,MRV + FC + LCV,44,44,0,0.0,True,
+orthopedic surgery,MRV + FC + look-ahead,44,44,0,0.023,True,43.0
+primary care,Plain backtracking,228,200000,199878,1.25,False,
+primary care,Backtracking + forward checking,228,200000,145126,1.2,False,
+primary care,MRV + forward checking,228,200000,160716,2.295,False,
+primary care,MRV + FC + LCV,228,200000,142307,2.821,False,
+primary care,MRV + FC + look-ahead,228,239,0,0.743,True,238.0
+psychiatry,Plain backtracking,38,135691,135653,0.279,True,
+psychiatry,Backtracking + forward checking,38,72791,55709,0.198,True,
+psychiatry,MRV + forward checking,38,107,48,0.001,True,
+psychiatry,MRV + FC + LCV,38,155,78,0.001,True,
+psychiatry,MRV + FC + look-ahead,38,41,0,0.02,True,40.0

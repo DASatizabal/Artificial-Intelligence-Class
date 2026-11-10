@@ -1,11 +1,13 @@
 {
+  "high_cost_flag_source": "MI Part 2 prediction (balanced logistic regression, riskiest 10%)",
+  "high_cost_flagged": 60,
   "baseline": {
     "members": 600,
     "placed": 465,
     "share_placed_within_standard": 0.775,
     "distance_gaps": 77,
     "capacity_gaps": 58,
-    "avg_miles": 4.88,
+    "avg_miles": 4.85,
     "max_miles": 15,
     "slot_use": 0.67,
     "high_cost_cap_violations": 0,
@@ -79,37 +81,37 @@
   "search_totals": [
     {
       "method": "Backtracking + forward checking",
-      "nodes": 408276,
-      "backtracks": 285856,
-      "seconds": 2.084,
+      "nodes": 481019,
+      "backtracks": 341552,
+      "seconds": 1.9809999999999999,
       "specialties_solved": 5
     },
     {
       "method": "MRV + FC + LCV",
-      "nodes": 200237,
-      "backtracks": 148599,
-      "seconds": 3.057,
+      "nodes": 200354,
+      "backtracks": 142385,
+      "seconds": 2.824,
       "specialties_solved": 6
     },
     {
       "method": "MRV + FC + look-ahead",
-      "nodes": 480,
+      "nodes": 479,
       "backtracks": 0,
-      "seconds": 0.764,
+      "seconds": 0.881,
       "specialties_solved": 7
     },
     {
       "method": "MRV + forward checking",
-      "nodes": 200237,
-      "backtracks": 162899,
-      "seconds": 3.064,
+      "nodes": 200306,
+      "backtracks": 160764,
+      "seconds": 2.296,
       "specialties_solved": 6
     },
     {
       "method": "Plain backtracking",
-      "nodes": 416759,
-      "backtracks": 416415,
-      "seconds": 1.914,
+      "nodes": 552382,
+      "backtracks": 552029,
+      "seconds": 1.992,
       "specialties_solved": 5
     }
   ],
@@ -119,30 +121,30 @@
     "min_conflicts": {
       "steps": 3000,
       "displaced": 73,
-      "displaced_replaced": 19,
+      "displaced_replaced": 21,
       "waitlisted": 64,
-      "other_members_moved": 14
+      "other_members_moved": 16
     },
     "full_resolve": {
-      "other_members_moved": 26,
+      "other_members_moved": 20,
       "placed": 402
     },
     "unaffected_members": {
-      "min_conflicts_lost_doctor": 10,
+      "min_conflicts_lost_doctor": 12,
       "min_conflicts_switched_doctor": 4,
       "full_resolve_lost_doctor": 12,
-      "full_resolve_switched_doctor": 14
+      "full_resolve_switched_doctor": 8
     },
     "after_min_conflicts": {
       "placed": 401,
       "share_placed_within_standard": 0.6683,
-      "avg_miles": 4.9,
+      "avg_miles": 4.87,
       "capacity_violations": 0
     },
     "after_full_resolve": {
       "placed": 402,
       "share_placed_within_standard": 0.67,
-      "avg_miles": 5.01,
+      "avg_miles": 4.98,
       "capacity_violations": 0
     }
   },

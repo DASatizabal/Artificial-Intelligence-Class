@@ -13,7 +13,8 @@ Or open `AI_Part1_Search_CSP.ipynb` in Colab and run all cells. It clones this r
 
 ## Folder
 ```
-data/members.csv                600 members (home cell, ZIP, needed specialty, age, placeholder high-cost flag)
+data/members.csv                600 members (home cell, ZIP, needed specialty, age, starter high-cost flag)
+data/predicted_high_cost_flags.csv  MI Part 2's predicted high-cost flag (riskiest 10%); used instead of the starter flag
 data/kb/                        county grid, ZIP cells, providers, CMS standards, provider_slots.csv
 src/kb.py                       knowledge base + A* (Manhattan heuristic)
 src/planner.py                  CSP: domains, backtracking, MRV, forward checking, LCV, max-flow look-ahead, min-conflicts
@@ -32,14 +33,15 @@ outputs/                        assignments.csv, search_comparison.csv, metrics.
 ## Results (seed 42)
 | Method | Steps (all 7 specialties) | Backtracks | Specialties solved |
 |---|---|---|---|
-| Plain backtracking | 416,759 | 416,415 | 5 of 7 |
-| Backtracking + forward checking | 408,276 | 285,856 | 5 of 7 |
-| MRV + forward checking | 200,237 | 162,899 | 6 of 7 |
-| MRV + FC + LCV | 200,237 | 148,599 | 6 of 7 |
-| **MRV + FC + look-ahead** | **480** | **0** | **7 of 7** |
+| Plain backtracking | 552,382 | 552,029 | 5 of 7 |
+| Backtracking + forward checking | 481,019 | 341,552 | 5 of 7 |
+| MRV + forward checking | 200,306 | 160,764 | 6 of 7 |
+| MRV + FC + LCV | 200,354 | 142,385 | 6 of 7 |
+| **MRV + FC + look-ahead** | **479** | **0** | **7 of 7** |
 
 Step limit: 200,000 per specialty. Backtrack counts come from `outputs/search_comparison.csv`.
 
-- Placed 465 of 600 members (77.5%) inside the CMS standard, 4.88 miles on average, zero capacity or high-cost cap violations.
+- High-cost flag: MI Part 2's prediction (60 members, 10%), not the starter flag (64 members); the two lists share only 10 members.
+- Placed 465 of 600 members (77.5%) inside the CMS standard, 4.85 miles on average, zero capacity or high-cost cap violations.
 - 77 distance gaps (no doctor inside the standard) and 58 capacity gaps (nearby doctors full).
-- Stress test (Pinecrest Medical Group, 15 doctors, leaves; 73 members displaced): min-conflicts repair ends with 401 placed, and 10 unaffected members lose their doctor and 4 switch; solving from scratch ends with 402 placed, and 12 unaffected members lose their doctor and 14 switch. Min-conflicts used its full 3,000-step budget without settling.
+- Stress test (Pinecrest Medical Group, 15 doctors, leaves; 73 members displaced): min-conflicts repair ends with 401 placed, and 12 unaffected members lose their doctor and 4 switch; solving from scratch ends with 402 placed, and 12 unaffected members lose their doctor and 8 switch. Min-conflicts used its full 3,000-step budget without settling.
