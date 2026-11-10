@@ -11,7 +11,7 @@ python src/gen_claims.py      # member-month data (same as MI Parts 1-2)
 python src/gen_docs.py        # document images (same as AI Part 2)
 python src/run_part3.py       # every model, plots, tables -> outputs/   (about 1 minute on a laptop CPU)
 ```
-Seeds: `torch.manual_seed(42)`, NumPy seed 42, `torch.use_deterministic_algorithms(True)`. Re-running gives identical tables. Or open `MI_Part3_Neural.ipynb` in Colab and run all cells (it clones this repo if needed; Colab already has PyTorch). Hardware used: CPU only.
+Seeds: `torch.manual_seed(42)`, NumPy seed 42, `torch.use_deterministic_algorithms(True)`. Re-running gives identical tables. Or open `MI_Part3_Neural.ipynb` in Colab and run all cells (it clones this repo if needed; Colab already has PyTorch). Hardware notes: CPU only, no GPU needed. Checked on a 2-core Intel Xeon (2.10 GHz) with Python 3 and the pinned versions in `requirements.txt`: the three commands together take about 40 seconds, and a fresh run regenerates the data and reproduces every table in `outputs/` exactly (only the train-time columns change).
 
 ## Code (src/)
 | File | What it does |
@@ -38,6 +38,12 @@ Seeds: `torch.manual_seed(42)`, NumPy seed 42, `torch.use_deterministic_algorith
 | HMM (2 states) | Monthly cost sequence | 0.829 | 0.590 | 0.673 | 0.010* | 14 | about 2 s | Interpretable tables |
 
 ECE follows the assignment's definition (confidence of the chosen answer). *For the HMM that answer is almost always "no", so its low ECE says little; `reliability_diagram.png` checks P(high-cost) directly and shows the class-weighted models overstate risk about 2 to 3 times. "Project 2 best" is refit on the same 80% of training members as the MLP (test ROC-AUC 0.755 here vs 0.752 in MI Part 2). The MLP keeps its epoch-1 weights: validation ROC-AUC peaks after one pass and training loss keeps falling while validation loss rises (see `training_curves.png`). MLP test confusion matrix: `mlp_confusion_test.png` (199 of 305 high-cost caught, 763 false alarms).
+
+**Win / loss vs Project 2:**
+- **Tie:** the MLP matches the Project 2 champion on ranking (ROC-AUC 0.755 vs 0.755) with about 600 times the parameters.
+- **Small loss:** the MLP's recall is slightly lower (0.653 vs 0.672).
+- **Insight:** the signal in this data is close to additive (age, conditions, prior cost), so the simpler logistic regression stays champion.
+- **Other models:** Naive Bayes and the HMM rank worse, but they are fast and readable. MC Dropout adds an uncertainty score without changing the ranking.
 
 ## Deep track: CNN on document images
 | Model | Clean test | Messy scans |
