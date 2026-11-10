@@ -1,0 +1,249 @@
+{
+  "seed": 42,
+  "sync_check": {
+    "files_checked": 15,
+    "all_identical": true
+  },
+  "reproduced_from_parts": {
+    "mi1_linear_test_mae": 2167.622,
+    "mi3_mlp_test_roc_auc": 0.7553,
+    "ai1_placed": 465,
+    "ai1_avg_miles": 4.85,
+    "ai3_intent_test_accuracy": 0.9945,
+    "softmax_messy_accuracy": 0.9967,
+    "cnn_messy_accuracy": 0.97
+  },
+  "member_scoring": {
+    "month": "2026-02",
+    "members": 600,
+    "mi1_linear_test_mae_check": 2167.622,
+    "mlp_test_roc_auc": 0.7553,
+    "hmm_flag_line": 0.1472,
+    "negative_cost_predictions_clipped": 25,
+    "high_cost_flagged": 60,
+    "needs_review": 60,
+    "review_sd_line": 0.0375,
+    "needs_review_and_flagged": 7,
+    "watch_list": 22,
+    "predicted_cost_total": 1121885.34,
+    "flagged_share_of_predicted_cost": 0.2629
+  },
+  "planner_cost": {
+    "placed": 465,
+    "avg_miles": 4.85,
+    "distance_gaps": 77,
+    "capacity_gaps": 58,
+    "high_cost_cap_violations": 0,
+    "predicted_cost_placed_members": 815026.57,
+    "predicted_cost_unplaced_members": 306858.77,
+    "with_high_cost_cap": {
+      "placed": 465,
+      "avg_miles": 4.85,
+      "panels": 67,
+      "max_high_cost_in_one_panel": 2,
+      "highest_cost_per_member": 4970.85,
+      "lowest_cost_per_member": 0.0,
+      "cost_per_member_cv": 0.4126,
+      "worst_panel_vs_specialty_average": 2.175
+    },
+    "without_high_cost_cap": {
+      "placed": 465,
+      "avg_miles": 4.85,
+      "panels": 67,
+      "max_high_cost_in_one_panel": 2,
+      "highest_cost_per_member": 4970.85,
+      "lowest_cost_per_member": 0.0,
+      "cost_per_member_cv": 0.4105,
+      "worst_panel_vs_specialty_average": 2.175
+    },
+    "doctors_with_seats_left": 33,
+    "seats_left_total": 229,
+    "cap_sensitivity": [
+      {
+        "flagged_share": 0.1,
+        "flagged": 60,
+        "placed_cap": 465,
+        "max_high_cost_in_one_panel_cap": 2,
+        "panels_over_real_cap_cap": 0,
+        "placed_no_cap": 465,
+        "max_high_cost_in_one_panel_no_cap": 2,
+        "panels_over_real_cap_no_cap": 0
+      },
+      {
+        "flagged_share": 0.2,
+        "flagged": 120,
+        "placed_cap": 465,
+        "max_high_cost_in_one_panel_cap": 5,
+        "panels_over_real_cap_cap": 0,
+        "placed_no_cap": 465,
+        "max_high_cost_in_one_panel_no_cap": 5,
+        "panels_over_real_cap_no_cap": 1
+      },
+      {
+        "flagged_share": 0.3,
+        "flagged": 180,
+        "placed_cap": 463,
+        "max_high_cost_in_one_panel_cap": 8,
+        "panels_over_real_cap_cap": 0,
+        "placed_no_cap": 465,
+        "max_high_cost_in_one_panel_no_cap": 10,
+        "panels_over_real_cap_no_cap": 9
+      },
+      {
+        "flagged_share": 0.4,
+        "flagged": 240,
+        "placed_cap": 452,
+        "max_high_cost_in_one_panel_cap": 8,
+        "panels_over_real_cap_cap": 0,
+        "placed_no_cap": 465,
+        "max_high_cost_in_one_panel_no_cap": 13,
+        "panels_over_real_cap_no_cap": 13
+      }
+    ]
+  },
+  "front_door_chat": {
+    "answers": 218,
+    "actions": {
+      "escalate": 42,
+      "accept": 81,
+      "reject": 48,
+      "ask_clarify": 16,
+      "inform": 24,
+      "block": 7
+    },
+    "integration_rules_fired": {
+      "I1": 11,
+      "I2": 23,
+      "I3": 22,
+      "I4": 36,
+      "I5": 10,
+      "I6": 16,
+      "I7": 11
+    },
+    "searches_matched_against_seats": 92,
+    "ai3_top_pick_was_full": 66,
+    "new_seats_taken": 51,
+    "high_cost_members": 29,
+    "with_review_or_watch_note": 25
+  },
+  "front_door_referrals": {
+    "answers": 160,
+    "actions": {
+      "accept": 21,
+      "escalate": 120,
+      "reject": 19
+    },
+    "integration_rules_fired": {
+      "I2": 11,
+      "I3": 10,
+      "I4": 120,
+      "I6": 9,
+      "I7": 12
+    },
+    "searches_matched_against_seats": 141,
+    "ai3_top_pick_was_full": 130,
+    "new_seats_taken": 21,
+    "high_cost_members": 21,
+    "with_review_or_watch_note": 20
+  },
+  "open_seats_by_specialty": {
+    "cardiology": {
+      "after_plan": 11,
+      "after_requests": 4
+    },
+    "dermatology": {
+      "after_plan": 15,
+      "after_requests": 5
+    },
+    "endocrinology": {
+      "after_plan": 7,
+      "after_requests": 0
+    },
+    "ob-gyn": {
+      "after_plan": 13,
+      "after_requests": 0
+    },
+    "orthopedic surgery": {
+      "after_plan": 19,
+      "after_requests": 2
+    },
+    "primary care": {
+      "after_plan": 142,
+      "after_requests": 133
+    },
+    "psychiatry": {
+      "after_plan": 22,
+      "after_requests": 13
+    }
+  },
+  "referral_actions_by_specialty": {
+    "cardiology": {
+      "accept": 2,
+      "escalate": 25,
+      "reject": 3
+    },
+    "dermatology": {
+      "accept": 7,
+      "escalate": 15,
+      "reject": 6
+    },
+    "endocrinology": {
+      "accept": 0,
+      "escalate": 31,
+      "reject": 0
+    },
+    "ob-gyn": {
+      "accept": 0,
+      "escalate": 34,
+      "reject": 3
+    },
+    "orthopedic surgery": {
+      "accept": 10,
+      "escalate": 11,
+      "reject": 4
+    },
+    "psychiatry": {
+      "accept": 2,
+      "escalate": 4,
+      "reject": 3
+    }
+  },
+  "documents": {
+    "test": {
+      "documents": 180,
+      "auto_routed": 180,
+      "auto_share": 1.0,
+      "wrong_auto_routes": 0,
+      "sent_to_human": 0,
+      "human_queue_that_softmax_had_wrong": 0,
+      "readers_disagree": 0,
+      "strict_both_agree_rule": {
+        "auto_routed": 180,
+        "wrong_auto_routes": 0
+      },
+      "cnn_alone": {
+        "auto_routed": 180,
+        "wrong_auto_routes": 0
+      }
+    },
+    "messy": {
+      "documents": 300,
+      "auto_routed": 298,
+      "auto_share": 0.9933,
+      "wrong_auto_routes": 0,
+      "sent_to_human": 2,
+      "human_queue_that_softmax_had_wrong": 1,
+      "readers_disagree": 10,
+      "strict_both_agree_rule": {
+        "auto_routed": 288,
+        "wrong_auto_routes": 0
+      },
+      "cnn_alone": {
+        "auto_routed": 297,
+        "wrong_auto_routes": 7
+      }
+    }
+  },
+  "all_answers_pass_schema": true,
+  "runtime_seconds": 43.9
+}

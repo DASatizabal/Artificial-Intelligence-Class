@@ -347,3 +347,67 @@ Three questions, three kinds of model.
 - **Fixes:** separate lines by age group, more signals than age, and a person reviewing young members with sudden ER visits.
 
 **Responsible AI:** the flag is for outreach calls, **never for denying care**. Unsure cases go to a person. And since I wrote the data's rules myself, these results show the method, not real-world truth.
+
+## How it all connects: the integrated pipeline (Nov 9)
+
+**The relay race.** Each Part used to run its own leg alone. Now they pass the baton:
+
+```
+Chat request ──> AI 3 reads it ──┐
+                                 ├──> Front door ──> one JSON answer with a proof trace
+Scanned doc ──> AI 2 sorts it ───┘        ^
+   (referrals only)                       |
+                                 AI 1 says which doctors still have seats
+                                 MI 1 / MI 2 / MI 3 say how risky and costly the member is
+```
+
+**Stage 0, sync check (the photocopy check).**
+- Every Part keeps its own copy of the map, the doctors, the claims and the images, so it runs alone in Colab.
+- Copies drift, like five people each editing their own printout of the same spreadsheet.
+- The check fingerprints all 15 shared files and stops the run if any copy is different.
+
+**Stage 1, the member's report card (all three MI Parts).**
+- **MI 1:** dollars. How much will this member cost next quarter? (We use the linear model because we add dollars up per doctor; the log model guesses the typical member and undercounts totals.)
+- **MI 2:** the red flag. Top 10% risk = 60 members, carrying 26% of the predicted dollars.
+- **MI 3 MC Dropout:** "I'm not sure." The 60 members the model is least sure about get a person to look. Only 7 of them overlap the red flags, so it catches different people.
+- **MI 3 HMM:** "storm coming." 22 members the HMM thinks are heading into an expensive stretch that MI 2 did not flag go on a watch list.
+
+**Stage 2, the seating chart now has price tags (AI 1 + MI 1).**
+- Same seating as AI 1 (465 placed, 4.85 miles). Every doctor's panel now shows its predicted dollars.
+- The 135 members we couldn't seat carry **$306,859** of predicted cost. That is the money stuck in access gaps.
+- **The high-cost cap turned out to be insurance we didn't use.** With 60 flagged members, no doctor ever got more than 2, so switching the cap off changed nothing. So we tested a sicker population:
+
+| Flagged | Doctors over their cap if the cap is off | Members seated, cap on |
+|---|---|---|
+| 10% | 0 | 465 |
+| 20% | 1 | 465 |
+| 30% | 9 | 463 |
+| 40% | 13 | 452 |
+
+- Like a seatbelt: it does nothing on a calm drive and matters in a crash. With the cap on, no doctor goes over at any level. The price is a few members who can't be seated.
+
+**Stage 3, the front door (AI 3 + AI 1 + MI 3).**
+- Before: AI 3 found the nearest in-network doctor accepting patients. But it didn't know the planner had already filled those seats. Like a restaurant host who seats you at a table that's already taken.
+- **66 of 92 times, AI 3's first pick was already full.**
+- Seven new rules (I1 to I7), written the same if/then way as AI 3's rules and added to the same proof trace:
+  - I1: you're already matched with a doctor of this type, so here they are
+  - I2: first pick has a seat, so take it
+  - I3: first pick is full but a farther doctor inside the limit has a seat, so go there (22 members)
+  - I4: everyone inside the limit is full, so escalate to the network team (36)
+  - I5: the PCP you asked for has no seats left after the plan, so reject (10)
+  - I6 and I7: add the MI 3 "person should review" and "watch list" notes
+
+**Stage 4, the mailroom (AI 2 + MI 3 + AI 3).**
+- AI 2's softmax sorts every scan. MI 3's CNN reads it too, as a second opinion.
+- We tested "only auto-route when both readers agree." It sent 10 more scans to a person and caught **zero** extra mistakes. The CNN alone would have made 7 wrong routes. **So the simpler reader stays in charge, and the CNN only leaves a note when it disagrees.** Same lesson as all term: simple and well-checked wins.
+- Every referral becomes a doctor request in the front door. **120 of 160 escalated**: after the seating chart, only 87 specialist seats were left, and endocrinology and OB-GYN ran out. That's a real network finding: there isn't room for a month of referrals.
+
+**The contract.** Every one of the 378 answers is one JSON object, checked against a schema before it's saved. Like a form that won't submit with a blank required field.
+
+**Proof it's the same models.** Before using any model, the pipeline retrains it with the Part's own code and checks that it gets that Part's exact number (MI 1 $2,167.62, AI 1 465 placed, AI 3 0.9945, and so on). If a number didn't match, the run would stop.
+
+**Honest limits:**
+- The chat requests and scans have no member attached, so each is paired with a member at random (same ZIP when possible).
+- Seats are handed out in request order.
+- It's one month's snapshot, with no time passing yet.
+

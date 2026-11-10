@@ -18,6 +18,8 @@ MI predicts cost           ->  AI (CSP) uses cost to assign doctors fairly
 | 4 | Probabilistic reasoning, RL, adversarial search | Waiting on instructions | Sequences + transformers | Waiting on instructions |
 | 5 | Multi-agent defense swarm | Opens Nov 16 | Final integrated system (capstone) | Opens Nov 23 |
 
+**Parts 1 to 3 integrated:** Done. `Integrated_Pipeline/` runs AI 1 to 3 and MI 1 to 3 as one system (sync check, member scoring, planner with cost, front door, document routing).
+
 ## Folders
 | Folder | What's inside |
 |---|---|
@@ -27,6 +29,7 @@ MI predicts cost           ->  AI (CSP) uses cost to assign doctors fairly
 | `MI_Part2_Classification/` | High-cost flag pipeline, cross-validation by member, confusion matrices, ROC/PR curves, flags for the AI planner, notebook |
 | `MI_Part3_Neural/` | MLP vs MI Part 2, CNN on document images, HMM + Naive Bayes, MC Dropout, calibration, ablations, error and subgroup analysis, notebook |
 | `AI_Part3_NLP_KR/` | Intent model, slot parser, rule base with proof traces, JSON outputs, notebook, APA report |
+| `Integrated_Pipeline/` | Parts 1 to 3 as one system: imports every Part in place, sync check, integration rules I1 to I7, JSON answers checked against a schema, notebook |
 | `docs/` | Revised term project proposal (Word) and a plain-language explanation of every Part |
 
 ## How to run
@@ -47,6 +50,7 @@ For MI Part 3, use `MI_Part3_Neural`, `pip install -r requirements.txt`, `python
 For AI Part 3, use `AI_Part3_NLP_KR`, `python src/gen_data.py`, then `python src/run_part3.py`.
 For AI Part 2, use `AI_Part2_Perception`, `python src/gen_docs.py`, then `python src/run_part2.py`.
 For MI Part 1, use `MI_Part1_EDA_Regression`, `python src/gen_claims.py`, then `python src/run_mi_part1.py`.
+For the integrated pipeline, use `Integrated_Pipeline`, `pip install -r ../MI_Part3_Neural/requirements.txt networkx jsonschema`, then `python src/run_pipeline.py` (needs every Part folder).
 
 ## Headline results
 - **AI Part 1:** uses MI Part 2's predicted high-cost flag. MRV + forward checking + a max-flow look-ahead solved all 7 specialty puzzles in 479 steps with zero backtracks. Plain backtracking solved 5 of 7 in 552,382 steps. 465 of 600 members (77.5%) placed inside the CMS distance standard, 4.85 miles on average, no rule broken.
@@ -55,3 +59,4 @@ For MI Part 1, use `MI_Part1_EDA_Regression`, `python src/gen_claims.py`, then `
 - **MI Part 2:** the "always no" baseline is 90% accurate and catches nobody; balanced logistic regression catches 66.9% of next quarter's high-cost members (ROC-AUC 0.752, PR-AUC 0.337) and hands the riskiest 10% to the AI planner.
 - **MI Part 3:** the MLP ties balanced logistic regression (ROC-AUC 0.755 both), so the simpler model stays champion; a CNN reads messy scans at 90.3% vs 78.0% for the softmax (clean training); a 2-state HMM explains high-cost spells with readable tables; removing class weights drops recall from 0.65 to 0.04; the flag misses high-cost members aged 18 to 44.
 - **AI Part 3:** intent accuracy .9945 on held-out requests and .8333 on new wording; slots exact when the intent is right; all 10 injection attempts detected with no false alarms.
+- **Integrated (Parts 1 to 3):** in 66 of 92 searches, AI Part 3's top pick had no seat left after the AI Part 1 plan; the front door now reroutes those members (22) or escalates them as capacity gaps (36). The 135 unplaced members carry $306,859 of predicted cost. The high-cost cap doesn't bind at 10% flagged; it starts to matter around 30%. Referral scans show the open specialist seats can't absorb a month of referrals (120 of 160 escalate). All 378 answers pass the JSON schema.

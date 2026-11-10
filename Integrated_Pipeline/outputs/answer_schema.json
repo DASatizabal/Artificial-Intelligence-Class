@@ -1,0 +1,148 @@
+{
+ "type": "object",
+ "required": [
+  "request_id",
+  "source",
+  "text",
+  "member",
+  "intent",
+  "confidence",
+  "slots",
+  "action",
+  "message",
+  "matched_provider",
+  "ai3_top_pick",
+  "notes",
+  "proof_trace"
+ ],
+ "properties": {
+  "source": {
+   "type": "string"
+  },
+  "member": {
+   "type": "object",
+   "required": [
+    "member_id",
+    "high_cost_flag",
+    "p_high_cost",
+    "pred_cost_next_3m",
+    "needs_review",
+    "watch_list"
+   ],
+   "properties": {
+    "member_id": {
+     "type": "string",
+     "pattern": "^M\\d{4}$"
+    },
+    "high_cost_flag": {
+     "enum": [
+      0,
+      1
+     ]
+    },
+    "p_high_cost": {
+     "type": "number",
+     "minimum": 0,
+     "maximum": 1
+    },
+    "pred_cost_next_3m": {
+     "type": "number",
+     "minimum": 0
+    }
+   }
+  },
+  "intent": {
+   "enum": [
+    "find_provider",
+    "check_network",
+    "change_pcp",
+    "report_access_issue"
+   ]
+  },
+  "confidence": {
+   "type": "number",
+   "minimum": 0,
+   "maximum": 1
+  },
+  "action": {
+   "enum": [
+    "accept",
+    "inform",
+    "reject",
+    "escalate",
+    "ask_clarify",
+    "block"
+   ]
+  },
+  "matched_provider": {
+   "type": [
+    "object",
+    "null"
+   ],
+   "required": [
+    "provider_id",
+    "name"
+   ],
+   "properties": {
+    "provider_id": {
+     "type": "string",
+     "pattern": "^P\\d{4}$"
+    },
+    "name": {
+     "type": "string"
+    },
+    "miles": {
+     "type": [
+      "integer",
+      "null"
+     ],
+     "minimum": 0
+    }
+   }
+  },
+  "ai3_top_pick": {
+   "type": [
+    "object",
+    "null"
+   ],
+   "required": [
+    "provider_id",
+    "name"
+   ],
+   "properties": {
+    "provider_id": {
+     "type": "string",
+     "pattern": "^P\\d{4}$"
+    },
+    "name": {
+     "type": "string"
+    },
+    "miles": {
+     "type": [
+      "integer",
+      "null"
+     ],
+     "minimum": 0
+    }
+   }
+  },
+  "notes": {
+   "type": "array",
+   "items": {
+    "type": "string"
+   }
+  },
+  "proof_trace": {
+   "type": "array",
+   "minItems": 1,
+   "items": {
+    "type": "object",
+    "required": [
+     "rule",
+     "if",
+     "then"
+    ]
+   }
+  }
+ }
+}
